@@ -135,7 +135,7 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Sprint
-    descriptiveName: Sprint + Walk_Forward to run
+    descriptiveName: Sprint
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: left shift
