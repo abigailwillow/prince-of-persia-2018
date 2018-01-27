@@ -10,6 +10,8 @@ public class FPSController : MonoBehaviour
     public float mouseSensitivity = 2f;
     public float playerGravity = 20f;
     public GameObject headBone;
+    public Vector3 SpawnPosition = new Vector3(0, 0, 0);
+    public LedgeGrabber hangScript;
 
     float movementH;
     float movementV;
@@ -20,6 +22,9 @@ public class FPSController : MonoBehaviour
     Vector3 curRotation = Vector3.zero;
     Vector3 deltaMovement = Vector3.zero;
     Animator anim;
+
+    [HideInInspector]
+    public bool isGrounded = true;
 
     CharacterController ply;
 
@@ -75,9 +80,19 @@ public class FPSController : MonoBehaviour
         deltaMovement = new Vector3(movementH, 0, movementV);
         deltaMovement = transform.TransformDirection(deltaMovement);
 
-        if (ply.isGrounded)
+        if (hangScript.Hanging)
         {
-            verticalVelocity = -playerGravity * Time.deltaTime;
+            isGrounded = hangScript.Hanging;
+        }
+
+        if (ply.isGrounded != isGrounded && !hangScript.Hanging)
+        {
+            isGrounded = ply.isGrounded;
+        }
+
+        if (isGrounded)
+        {
+            //verticalVelocity = -playerGravity * Time.deltaTime;
             if (Input.GetButtonDown("Jump"))
             {
                 verticalVelocity = jumpStrength;
@@ -88,7 +103,18 @@ public class FPSController : MonoBehaviour
             verticalVelocity -= playerGravity * Time.deltaTime;
         }
         deltaMovement.y = verticalVelocity;
+        if (hangScript.Hanging)
+        {
+            deltaMovement.y = Mathf.Max(deltaMovement.y, 0);
+        }
 
         ply.Move(deltaMovement * Time.deltaTime);
+
+        if (Input.GetButton("Reload"))
+        {
+            Vector3 curPos = headBone.transform.position;
+            transform.position = SpawnPosition;
+            verticalVelocity = 0f;
+        }
     }
 }
