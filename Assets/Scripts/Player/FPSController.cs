@@ -10,6 +10,7 @@ public class FPSController : MonoBehaviour
     public float mouseSensitivity = 2f;
     public float playerGravity = 20f;
     public GameObject headBone;
+    public Camera FirstPersonCamera;
     public Vector3 SpawnPosition = new Vector3(0, 0, 0);
     public LedgeGrabber hangScript;
 
@@ -50,7 +51,7 @@ public class FPSController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) // Taking inputs
         {
             anim.SetFloat("MoveSpeed", 1);
             curMultiplier = 1f;
@@ -75,12 +76,13 @@ public class FPSController : MonoBehaviour
         curRotation.x -= rotationY;
         curRotation.x = Mathf.Clamp(curRotation.x, -90, 90);
         curRotation.y = transform.eulerAngles.y;
-        headBone.transform.eulerAngles = curRotation;
-        transform.Rotate(0, rotationX, 0);
+        headBone.transform.eulerAngles = curRotation; // Mouse rotation
+        FirstPersonCamera.transform.eulerAngles = curRotation;
+        transform.Rotate(0, rotationX, 0); // Head rotation TO-DO SMOOTH
         deltaMovement = new Vector3(movementH, 0, movementV);
         deltaMovement = transform.TransformDirection(deltaMovement);
 
-        if (hangScript.Hanging)
+        if (hangScript.Hanging) // Hanging/climbing
         {
             isGrounded = hangScript.Hanging;
         }
@@ -90,9 +92,8 @@ public class FPSController : MonoBehaviour
             isGrounded = ply.isGrounded;
         }
 
-        if (isGrounded)
+        if (isGrounded) // Jumping and manipulating gravity
         {
-            //verticalVelocity = -playerGravity * Time.deltaTime;
             if (Input.GetButtonDown("Jump"))
             {
                 verticalVelocity = jumpStrength;
