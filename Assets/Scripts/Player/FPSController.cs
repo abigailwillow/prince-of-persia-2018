@@ -23,6 +23,7 @@ public class FPSController : MonoBehaviour
     Vector3 curRotation = Vector3.zero;
     Vector3 deltaMovement = Vector3.zero;
     Animator anim;
+    bool debugMode = false;
 
     [HideInInspector]
     public bool isGrounded = true;
@@ -53,12 +54,12 @@ public class FPSController : MonoBehaviour
     {
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) // Taking inputs
         {
-            anim.SetFloat("MoveSpeed", 1);
+            anim.SetFloat("MoveSpeed", 1f);
             curMultiplier = 1f;
         }
         else
         {
-            anim.SetFloat("MoveSpeed", 0);
+            anim.SetFloat("MoveSpeed", 0f);
             curMultiplier = 0f;
         }
 
@@ -67,8 +68,8 @@ public class FPSController : MonoBehaviour
             anim.SetFloat("MoveSpeed", 1.5f);
             curMultiplier = runMultiplier;
         }
-        movementH = Input.GetAxis("Horizontal") * movementSpeed * curMultiplier;
-        movementV = Input.GetAxis("Vertical") * movementSpeed * curMultiplier;
+        movementH = Input.GetAxis("Horizontal");
+        movementV = Input.GetAxis("Vertical");
 
         rotationX = Input.GetAxis("Mouse X") * mouseSensitivity;
         rotationY = Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -79,34 +80,58 @@ public class FPSController : MonoBehaviour
         headBone.transform.eulerAngles = curRotation; // Mouse rotation
         FirstPersonCamera.transform.eulerAngles = curRotation;
         transform.Rotate(0, rotationX, 0); // Head rotation TO-DO SMOOTH
+
         deltaMovement = new Vector3(movementH, 0, movementV);
+        deltaMovement = Vector3.Normalize(deltaMovement) * movementSpeed * curMultiplier;
         deltaMovement = transform.TransformDirection(deltaMovement);
 
-        if (hangScript.Hanging) // Hanging/climbing
+        if (Input.GetButton("Debug"))
         {
-            isGrounded = hangScript.Hanging;
-        }
-
-        if (ply.isGrounded != isGrounded && !hangScript.Hanging)
-        {
-            isGrounded = ply.isGrounded;
-        }
-
-        if (isGrounded) // Jumping and manipulating gravity
-        {
-            if (Input.GetButtonDown("Jump"))
+            if (debugMode)
             {
-                verticalVelocity = jumpStrength;
+                debugMode = false;
+            }
+            else
+            {
+                debugMode = true;
+            }
+        }
+
+        if (debugMode)
+        {
+            if (Input.GetButton("Jump"))
+            {
+                verticalVelocity = Input.GetAxis("Jump");
             }
         }
         else
         {
-            verticalVelocity -= playerGravity * Time.deltaTime;
-        }
-        deltaMovement.y = verticalVelocity;
-        if (hangScript.Hanging)
-        {
-            deltaMovement.y = Mathf.Max(deltaMovement.y, 0);
+            if (hangScript.Hanging) // Hanging/climbing
+            {
+                isGrounded = hangScript.Hanging;
+            }
+
+            if (ply.isGrounded != isGrounded && !hangScript.Hanging)
+            {
+                isGrounded = ply.isGrounded;
+            }
+
+            if (isGrounded) // Jumping and manipulating gravity
+            {
+                if (Input.GetButtonDown("Jump"))
+                {
+                    verticalVelocity = jumpStrength;
+                }
+            }
+            else
+            {
+                verticalVelocity -= playerGravity * Time.deltaTime;
+            }
+            deltaMovement.y = verticalVelocity;
+            if (hangScript.Hanging)
+            {
+                deltaMovement.y = Mathf.Max(deltaMovement.y, 0);
+            }
         }
 
         ply.Move(deltaMovement * Time.deltaTime);
