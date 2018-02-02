@@ -110,14 +110,12 @@ public class FPSController : MonoBehaviour
                 debugMode = false;
                 movementSpeed *= 0.5f;
                 verticalVelocity = 0f;
-                ply.detectCollisions = true;
             }
             else
             {
                 debugMode = true;
                 movementSpeed *= 2f;
                 verticalVelocity = 0f;
-                ply.detectCollisions = false;
             }
         }
 
@@ -152,8 +150,6 @@ public class FPSController : MonoBehaviour
                 if (Input.GetButtonDown("Jump"))
                 {
                     verticalVelocity = jumpStrength;
-                    deltaMovement = new Vector3(0, jumpStrength, 0) + lastMove;
-                    ply.Move(deltaMovement);
                 }
             }
             else
@@ -167,19 +163,10 @@ public class FPSController : MonoBehaviour
             }
         }
 
-        //deltaMovement.x = Mathf.Lerp(deltaMovement.x, 0, 0.1f);
-        //deltaMovement.z = Mathf.Lerp(deltaMovement.z, 0, 0.1f);
-
         //print("x = " + deltaMovement.x + "; z = " + deltaMovement.z);
 
-        debugGUI.SetText("Velocity = {0:1}", ply.velocity.sqrMagnitude);
-          
-        if (ply.isGrounded)
-        {
-            lastMove = deltaMovement;
-            print(lastMove);
-        }
-        
+        debugGUI.SetText("Velocity: {0:1} \nGrounded: " + isGrounded, ply.velocity.magnitude);
+
         ply.Move(deltaMovement * Time.deltaTime);
 
         if (Input.GetButton("Reload"))
