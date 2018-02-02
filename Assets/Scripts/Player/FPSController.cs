@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class FPSController : MonoBehaviour
 {
@@ -9,10 +10,11 @@ public class FPSController : MonoBehaviour
     public float jumpStrength = 6f;
     public float mouseSensitivity = 2f;
     public float playerGravity = 20f;
-    public GameObject headBone;
+    public Transform headBone;
     public Camera FirstPersonCamera;
     public Vector3 SpawnPosition = new Vector3(0, 0, 0);
     public LedgeGrabber hangScript;
+    public TextMeshProUGUI debugGUI;
 
     float movementH;
     float movementV;
@@ -24,13 +26,15 @@ public class FPSController : MonoBehaviour
     Vector3 deltaMovement = Vector3.zero;
     Animator anim;
     bool debugMode = false;
+    bool gamePaused = false;
+    Vector3 lastMove;
 
     [HideInInspector]
     public bool isGrounded = true;
 
     CharacterController ply;
 
-    void Start()
+    void Awake()
     {
         ply = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
@@ -85,15 +89,35 @@ public class FPSController : MonoBehaviour
         deltaMovement = Vector3.Normalize(deltaMovement) * movementSpeed * curMultiplier;
         deltaMovement = transform.TransformDirection(deltaMovement);
 
-        if (Input.GetButton("Debug"))
+        if (Input.GetButtonDown("Menu")) // Menu Button Pressed
+        {
+            if (gamePaused)
+            {
+                setCursorLocked(true);
+                gamePaused = false;
+            }
+            else
+            {
+                setCursorLocked(false);
+                gamePaused = true;
+            }
+        }
+
+        if (Input.GetButtonDown("Debug")) // Debug Mode
         {
             if (debugMode)
             {
                 debugMode = false;
+                movementSpeed *= 0.5f;
+                verticalVelocity = 0f;
+                ply.detectCollisions = true;
             }
             else
             {
                 debugMode = true;
+                movementSpeed *= 2f;
+                verticalVelocity = 0f;
+                ply.detectCollisions = false;
             }
         }
 
@@ -101,7 +125,14 @@ public class FPSController : MonoBehaviour
         {
             if (Input.GetButton("Jump"))
             {
-                verticalVelocity = Input.GetAxis("Jump");
+                verticalVelocity = jumpStrength;
+                deltaMovement.y = verticalVelocity;
+            }
+
+            if (Input.GetButton("Crouch"))
+            {
+                verticalVelocity = -jumpStrength;
+                deltaMovement.y = verticalVelocity;
             }
         }
         else
@@ -116,11 +147,13 @@ public class FPSController : MonoBehaviour
                 isGrounded = ply.isGrounded;
             }
 
-            if (isGrounded) // Jumping and manipulating gravity
+            if (isGrounded) // Jumping and gravity
             {
                 if (Input.GetButtonDown("Jump"))
                 {
                     verticalVelocity = jumpStrength;
+                    deltaMovement = new Vector3(0, jumpStrength, 0) + lastMove;
+                    ply.Move(deltaMovement);
                 }
             }
             else
@@ -134,6 +167,19 @@ public class FPSController : MonoBehaviour
             }
         }
 
+        //deltaMovement.x = Mathf.Lerp(deltaMovement.x, 0, 0.1f);
+        //deltaMovement.z = Mathf.Lerp(deltaMovement.z, 0, 0.1f);
+
+        //print("x = " + deltaMovement.x + "; z = " + deltaMovement.z);
+
+        debugGUI.SetText("Velocity = {0:1}", ply.velocity.sqrMagnitude);
+          
+        if (ply.isGrounded)
+        {
+            lastMove = deltaMovement;
+            print(lastMove);
+        }
+        
         ply.Move(deltaMovement * Time.deltaTime);
 
         if (Input.GetButton("Reload"))
