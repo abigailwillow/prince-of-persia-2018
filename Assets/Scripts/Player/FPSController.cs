@@ -12,7 +12,6 @@ public class FPSController : MonoBehaviour
     public float playerGravity = 20f;
     public Transform headBone;
     public Camera FirstPersonCamera;
-    public Vector3 SpawnPosition = new Vector3(0, 0, 0);
     public LedgeGrabber hangScript;
     public TextMeshProUGUI debugGUI;
 
@@ -20,17 +19,16 @@ public class FPSController : MonoBehaviour
     float movementV;
     float rotationX;
     float rotationY;
-    float verticalVelocity;
     float curMultiplier = 0f;
     Vector3 curRotation = Vector3.zero;
     Vector3 deltaMovement = Vector3.zero;
     Animator anim;
-    bool debugMode = false;
-    bool gamePaused = false;
     Vector3 lastMove;
+    ButtonController ButtonScript;
 
     [HideInInspector]
     public bool isGrounded = true;
+    public float verticalVelocity;
 
     CharacterController ply;
 
@@ -38,6 +36,7 @@ public class FPSController : MonoBehaviour
     {
         ply = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+        ButtonScript = GetComponent<ButtonController>();
         setCursorLocked(true);
         headBone.transform.eulerAngles = curRotation;
     }
@@ -72,8 +71,8 @@ public class FPSController : MonoBehaviour
             anim.SetFloat("MoveSpeed", 1.5f);
             curMultiplier = runMultiplier;
         }
-        movementH = Input.GetAxis("Horizontal");
-        movementV = Input.GetAxis("Vertical");
+        movementH = Input.GetAxisRaw("Horizontal");
+        movementV = Input.GetAxisRaw("Vertical");
 
         rotationX = Input.GetAxis("Mouse X") * mouseSensitivity;
         rotationY = Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -86,40 +85,27 @@ public class FPSController : MonoBehaviour
         transform.Rotate(0, rotationX, 0); // Head rotation TO-DO SMOOTH
 
         deltaMovement = new Vector3(movementH, 0, movementV);
-        deltaMovement = Vector3.Normalize(deltaMovement) * movementSpeed * curMultiplier;
+        deltaMovement = Vector3.Normalize(deltaMovement);
+        deltaMovement *= movementSpeed * curMultiplier;
         deltaMovement = transform.TransformDirection(deltaMovement);
-
-        if (Input.GetButtonDown("Menu")) // Menu Button Pressed
-        {
-            if (gamePaused)
-            {
-                setCursorLocked(true);
-                gamePaused = false;
-            }
-            else
-            {
-                setCursorLocked(false);
-                gamePaused = true;
-            }
-        }
 
         if (Input.GetButtonDown("Debug")) // Debug Mode
         {
-            if (debugMode)
+            if (ButtonScript.debugMode)
             {
-                debugMode = false;
+                ButtonScript.debugMode = false;
                 movementSpeed *= 0.5f;
                 verticalVelocity = 0f;
             }
             else
             {
-                debugMode = true;
+                ButtonScript.debugMode = true;
                 movementSpeed *= 2f;
                 verticalVelocity = 0f;
             }
         }
 
-        if (debugMode)
+        if (ButtonScript.debugMode)
         {
             if (Input.GetButton("Jump"))
             {
@@ -168,12 +154,5 @@ public class FPSController : MonoBehaviour
         debugGUI.SetText("Velocity: {0:1} \nGrounded: " + isGrounded, ply.velocity.magnitude);
 
         ply.Move(deltaMovement * Time.deltaTime);
-
-        if (Input.GetButton("Reload"))
-        {
-            Vector3 curPos = headBone.transform.position;
-            transform.position = SpawnPosition;
-            verticalVelocity = 0f;
-        }
     }
 }
