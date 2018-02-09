@@ -10,6 +10,8 @@ public class FPSController : MonoBehaviour
     public float jumpStrength = 6f;
     public float mouseSensitivity = 2f;
     public float playerGravity = 20f;
+    //public float cameraSmooth = 0.1f;
+    //public float maxCameraMove = 1f;
     public Transform headBone;
     public Camera FirstPersonCamera;
     public LedgeGrabber hangScript;
