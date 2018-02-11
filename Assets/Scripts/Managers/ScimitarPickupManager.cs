@@ -20,12 +20,4 @@ public class ScimitarPickupManager : MonoBehaviour {
         transform.rotation = Quaternion.Euler(0, -Time.time * RotationSpeed, 0);
         transform.position = new Vector3(StartPos.x, StartPos.y + Mathf.Sin(Time.time * VerticalSpeed) * VerticalRange, StartPos.z);
     }
-
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.tag == "Player")
-        {
-            gameObject.SetActive(false);
-        }
-    }
 }

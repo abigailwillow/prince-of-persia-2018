@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireFlicker : MonoBehaviour
 {
 
-    public float minIntensity = 0.5f;
+/*    public float minIntensity = 0.5f;
     public float maxIntensity = 2f;
     public float flickerSpeed = 0.1f;
     public float smoothAmount = 0.1f;
@@ -27,5 +27,5 @@ public class FireFlicker : MonoBehaviour
     void Update()
     {
         print(fireLight.intensity);
-    }
+    }*/
 }

@@ -14,4 +14,10 @@ public class MainMenuManager : MonoBehaviour {
     {
         Application.OpenURL(WebURL);
     }
+
+    public void QuitApplication()
+    {
+        print("Shutdown Pending!");
+        Application.Quit();
+    }
 }
