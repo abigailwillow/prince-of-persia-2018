@@ -20,7 +20,7 @@ public class ButtonController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Reload")) // Reload Player Position
+        if (Input.GetButtonDown("Reload")) // Reload Player Position
         {
             transform.position = SpawnPosition;
             ControllerScript.verticalVelocity = 0f;

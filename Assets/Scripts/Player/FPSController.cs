@@ -104,6 +104,7 @@ public class FPSController : MonoBehaviour
                 ButtonScript.debugMode = true;
                 movementSpeed *= 2f;
                 verticalVelocity = 0f;
+                isGrounded = false;
             }
         }
 
