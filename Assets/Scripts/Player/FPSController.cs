@@ -27,6 +27,7 @@ public class FPSController : MonoBehaviour
     Animator anim;
     Vector3 lastMove;
     ButtonController ButtonScript;
+    bool isCursorLocked;
 
     [HideInInspector]
     public bool isGrounded = true;
@@ -48,10 +49,12 @@ public class FPSController : MonoBehaviour
         if (boolean)
         {
             Cursor.lockState = CursorLockMode.Locked;
+            isCursorLocked = true;
         }
         else
         {
             Cursor.lockState = CursorLockMode.None;
+            isCursorLocked = false;
         }
     }
 
@@ -76,8 +79,16 @@ public class FPSController : MonoBehaviour
         movementH = Input.GetAxisRaw("Horizontal");
         movementV = Input.GetAxisRaw("Vertical");
 
-        rotationX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        rotationY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        if (isCursorLocked)
+        {
+            rotationX = Input.GetAxis("Mouse X") * mouseSensitivity;
+            rotationY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        }
+        else
+        {
+            rotationX = 0;
+            rotationY = 0;
+        }
 
         curRotation.x -= rotationY;
         curRotation.x = Mathf.Clamp(curRotation.x, -90, 90);
@@ -157,5 +168,10 @@ public class FPSController : MonoBehaviour
         debugGUI.SetText("Velocity: {0:1} \nGrounded: " + isGrounded, ply.velocity.magnitude);
 
         ply.Move(deltaMovement * Time.deltaTime);
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            anim.SetTrigger("Attack");
+        }
     }
 }
