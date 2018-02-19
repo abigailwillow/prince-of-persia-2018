@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour
 {
-
-    public Vector3 SpawnPosition = Vector3.zero;
 
     bool gamePaused = false;
 
@@ -22,8 +21,8 @@ public class ButtonController : MonoBehaviour
     {
         if (Input.GetButtonDown("Reload")) // Reload Player Position
         {
-            transform.position = SpawnPosition;
-            ControllerScript.verticalVelocity = 0f;
+            ControllerScript.setCursorLocked(false);
+            SceneManager.LoadScene("menu");
         }
 
         if (Input.GetButtonDown("Menu")) // Menu Button Pressed

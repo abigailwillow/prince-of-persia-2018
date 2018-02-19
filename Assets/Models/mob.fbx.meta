@@ -31,7 +31,10 @@ ModelImporter:
     7400004: Walk
     7400006: Attack
     7400008: Attack
-    7400010: Armature|Attack
+    7400010: Attack
+    7400012: Walk
+    7400014: Walk
+    7400016: Armature|Walk
     9500000: //RootNode
     13700000: Character
   materials:
@@ -58,17 +61,17 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|Attack
-      takeName: Armature|Attack
+      name: Armature|Walk
+      takeName: Armature|Walk
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 120
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -80,7 +83,39 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.17377047
+        functionName: PlayFootstep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 6d140b514600dd647a8bf4224835fa1c,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.4174637
+        functionName: PlayFootstep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 6d140b514600dd647a8bf4224835fa1c,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.67259806
+        functionName: PlayFootstep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 6d140b514600dd647a8bf4224835fa1c,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.91803277
+        functionName: PlayFootstep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 6d140b514600dd647a8bf4224835fa1c,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

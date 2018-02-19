@@ -16,6 +16,8 @@ public class FPSController : MonoBehaviour
     public Camera FirstPersonCamera;
     public LedgeGrabber hangScript;
     public TextMeshProUGUI debugGUI;
+    public float SFXVolume = 0.5f;
+    public AudioClip StoneFootstep;
 
     float movementH;
     float movementV;
@@ -28,18 +30,20 @@ public class FPSController : MonoBehaviour
     Vector3 lastMove;
     ButtonController ButtonScript;
     bool isCursorLocked;
+    CharacterController ply;
+    AudioSource audioSource;
 
     [HideInInspector]
     public bool isGrounded = true;
+    [HideInInspector]
     public float verticalVelocity;
-
-    CharacterController ply;
 
     void Awake()
     {
         ply = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         ButtonScript = GetComponent<ButtonController>();
+        audioSource = GetComponent<AudioSource>();
         setCursorLocked(true);
         headBone.transform.eulerAngles = curRotation;
     }
@@ -172,6 +176,16 @@ public class FPSController : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             anim.SetTrigger("Attack");
+        }
+    }
+
+    void PlayFootstep()
+    {
+        if (isGrounded)
+        {
+            audioSource.volume = Random.Range(0.5f, 0.6f);
+            audioSource.pitch = Random.Range(0.75f, 1.25f);
+            audioSource.PlayOneShot(StoneFootstep, SFXVolume);
         }
     }
 }
