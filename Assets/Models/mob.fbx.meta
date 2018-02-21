@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 642b7e2e1203830458a21631a90fbc76
-timeCreated: 1516992780
+timeCreated: 1519221631
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -47,7 +47,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'RightLowerLeg' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
