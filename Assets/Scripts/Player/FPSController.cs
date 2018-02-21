@@ -62,6 +62,11 @@ public class FPSController : MonoBehaviour
         }
     }
 
+    void LateUpdate()
+    {
+        headBone.transform.eulerAngles += new Vector3(curRotation.x, 0, 0);
+    }
+
     void Update()
     {
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) // Taking inputs
@@ -77,7 +82,7 @@ public class FPSController : MonoBehaviour
 
         if (Input.GetAxisRaw("Vertical") > 0 && Input.GetButton("Sprint"))
         {
-            anim.SetFloat("MoveSpeed", 1.5f);
+            anim.SetFloat("MoveSpeed", 2f);
             curMultiplier = runMultiplier;
         }
         movementH = Input.GetAxisRaw("Horizontal");
@@ -96,10 +101,11 @@ public class FPSController : MonoBehaviour
 
         curRotation.x -= rotationY;
         curRotation.x = Mathf.Clamp(curRotation.x, -90, 90);
-        curRotation.y = transform.eulerAngles.y;
-        headBone.transform.eulerAngles = curRotation; // Mouse rotation
-        FirstPersonCamera.transform.eulerAngles = curRotation;
-        transform.Rotate(0, rotationX, 0); // Head rotation TO-DO SMOOTH
+        //curRotation.y = transform.eulerAngles.y;
+        curRotation.y += rotationX;
+        //FirstPersonCamera.transform.eulerAngles = curRotation;
+        //transform.Rotate(0, rotationX, 0); // Body rotation
+        transform.eulerAngles = new Vector3(0, curRotation.y, 0);
 
         deltaMovement = new Vector3(movementH, 0, movementV);
         deltaMovement = Vector3.Normalize(deltaMovement);
@@ -175,7 +181,7 @@ public class FPSController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            anim.SetTrigger("Attack");
+            // ATTACK!
         }
     }
 
