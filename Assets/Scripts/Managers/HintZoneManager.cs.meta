@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9c3be351ec5a0634e919bbd9de169da1
+timeCreated: 1519317486
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - CanvasTemplate: {fileID: 1117934059307734, guid: c6dfa2c605f49234c8df8d77725851f9,
+      type: 2}
+  - ActionButton: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

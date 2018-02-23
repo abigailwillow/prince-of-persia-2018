@@ -1,23 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MinimapFollower : MonoBehaviour {
 
-    public Transform playerPos;
+    float StartHeight;
 
     void Awake()
     {
-
+        StartHeight = transform.position.y;
     }
 
     void LateUpdate()
     {
-
-    }
-
-    void Update()
-    {
-
+        transform.position = new Vector3(transform.position.x, StartHeight, transform.position.z);
     }
 }
