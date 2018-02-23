@@ -21,8 +21,7 @@ public class AIController : MonoBehaviour {
     void Update()
     {
         nav.SetDestination(ply.position);
-        headBone.transform.LookAt(ply.position + new Vector3(0,1,0));
-        print(nav.desiredVelocity.magnitude);
+        headBone.transform.LookAt(ply.position + new Vector3(0, 1.5f, 0));
         if (nav.desiredVelocity.magnitude > 0.5f)
         {
             anim.SetFloat("MoveSpeed", 1f);

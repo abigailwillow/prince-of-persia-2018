@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class FPSController : MonoBehaviour
@@ -16,8 +14,6 @@ public class FPSController : MonoBehaviour
     public Camera FirstPersonCamera;
     public LedgeGrabber hangScript;
     public TextMeshProUGUI debugGUI;
-    public float SFXVolume = 0.5f;
-    public AudioClip StoneFootstep;
 
     float movementH;
     float movementV;
@@ -31,7 +27,6 @@ public class FPSController : MonoBehaviour
     ButtonController ButtonScript;
     bool isCursorLocked;
     CharacterController ply;
-    AudioSource audioSource;
 
     [HideInInspector]
     public bool isGrounded = true;
@@ -43,7 +38,6 @@ public class FPSController : MonoBehaviour
         ply = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         ButtonScript = GetComponent<ButtonController>();
-        audioSource = GetComponent<AudioSource>();
         setCursorLocked(true);
         headBone.transform.eulerAngles = curRotation;
     }
@@ -60,11 +54,6 @@ public class FPSController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             isCursorLocked = false;
         }
-    }
-
-    void LateUpdate()
-    {
-        headBone.transform.eulerAngles += new Vector3(curRotation.x, 0, 0);
     }
 
     void Update()
@@ -101,10 +90,8 @@ public class FPSController : MonoBehaviour
 
         curRotation.x -= rotationY;
         curRotation.x = Mathf.Clamp(curRotation.x, -90, 90);
-        //curRotation.y = transform.eulerAngles.y;
         curRotation.y += rotationX;
-        //FirstPersonCamera.transform.eulerAngles = curRotation;
-        //transform.Rotate(0, rotationX, 0); // Body rotation
+        FirstPersonCamera.transform.eulerAngles = curRotation;
         transform.eulerAngles = new Vector3(0, curRotation.y, 0);
 
         deltaMovement = new Vector3(movementH, 0, movementV);
@@ -182,16 +169,6 @@ public class FPSController : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             // ATTACK!
-        }
-    }
-
-    void PlayFootstep()
-    {
-        if (isGrounded)
-        {
-            audioSource.volume = Random.Range(0.5f, 0.6f);
-            audioSource.pitch = Random.Range(0.75f, 1.25f);
-            audioSource.PlayOneShot(StoneFootstep, SFXVolume);
         }
     }
 }
