@@ -14,6 +14,7 @@ public class FPSController : MonoBehaviour
     public Camera FirstPersonCamera;
     public LedgeGrabber hangScript;
     public TextMeshProUGUI debugGUI;
+    public Animator ViewmodelAnimator;
 
     float movementH;
     float movementV;
@@ -61,17 +62,20 @@ public class FPSController : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) // Taking inputs
         {
             anim.SetFloat("MoveSpeed", 1f);
+            ViewmodelAnimator.SetFloat("MoveSpeed", 1f);
             curMultiplier = 1f;
         }
         else
         {
             anim.SetFloat("MoveSpeed", 0f);
+            ViewmodelAnimator.SetFloat("MoveSpeed", 0f);
             curMultiplier = 0f;
         }
 
         if (Input.GetAxisRaw("Vertical") > 0 && Input.GetButton("Sprint"))
         {
             anim.SetFloat("MoveSpeed", 2f);
+            ViewmodelAnimator.SetFloat("MoveSpeed", 2f);
             curMultiplier = runMultiplier;
         }
         movementH = Input.GetAxisRaw("Horizontal");
@@ -91,8 +95,8 @@ public class FPSController : MonoBehaviour
         curRotation.x -= rotationY;
         curRotation.x = Mathf.Clamp(curRotation.x, -90, 90);
         curRotation.y += rotationX;
-        FirstPersonCamera.transform.eulerAngles = curRotation;
         transform.eulerAngles = new Vector3(0, curRotation.y, 0);
+        FirstPersonCamera.transform.eulerAngles = new Vector3(curRotation.x, transform.eulerAngles.y, 0);
 
         deltaMovement = new Vector3(movementH, 0, movementV);
         deltaMovement = Vector3.Normalize(deltaMovement);
@@ -168,7 +172,7 @@ public class FPSController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            // ATTACK!
+            ViewmodelAnimator.SetTrigger("Attack");
         }
     }
 }
