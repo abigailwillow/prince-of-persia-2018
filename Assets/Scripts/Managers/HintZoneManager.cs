@@ -10,6 +10,8 @@ public class HintZoneManager : MonoBehaviour
     public float LifeTime = 5f;
     public float FadeTime = 1f;
 
+    bool isInstanced;
+
     HintTextLocator HintElements;
 
     void OnTriggerEnter(Collider collider)
@@ -22,28 +24,33 @@ public class HintZoneManager : MonoBehaviour
 
     IEnumerator FadeCanvas()
     {
-        GameObject HintCanvas = Instantiate(CanvasTemplate, HUDCanvas.transform, false);
-        HintElements = HintCanvas.GetComponent<HintTextLocator>();
-        HintElements.ActionText.text = ActionName;
-        HintElements.ActionButton.text = ActionButton;
-        CanvasGroup FadingCanvas = HintCanvas.GetComponent<CanvasGroup>();
-
-        for (float i = 0; i <= FadeTime; i += Time.deltaTime)
+        if (!isInstanced)
         {
-            FadingCanvas.alpha = i;
+            GameObject HintCanvas = Instantiate(CanvasTemplate, HUDCanvas.transform, false);
+            isInstanced = true;
+            HintElements = HintCanvas.GetComponent<HintTextLocator>();
+            HintElements.ActionText.text = ActionName;
+            HintElements.ActionButton.text = ActionButton;
+            CanvasGroup FadingCanvas = HintCanvas.GetComponent<CanvasGroup>();
+
+            for (float i = 0; i <= FadeTime; i += Time.deltaTime)
+            {
+                FadingCanvas.alpha = i;
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(LifeTime);
+
+            for (float i = FadeTime; i >= 0; i -= Time.deltaTime)
+            {
+                FadingCanvas.alpha = i;
+                yield return null;
+            }
+
             yield return null;
+
+            Destroy(HintCanvas);
+            isInstanced = false;
         }
-
-        yield return new WaitForSeconds(LifeTime);
-
-        for (float i = FadeTime; i >= 0; i -= Time.deltaTime)
-        {
-            FadingCanvas.alpha = i;
-            yield return null;
-        }
-
-        yield return null;
-
-        Destroy(HintCanvas);
     }
 }

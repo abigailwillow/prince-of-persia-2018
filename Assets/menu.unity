@@ -6080,7 +6080,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4453462352064714, guid: d6ebe5a3ce297fd429c3e17db9d1f9c6, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4453462352064714, guid: d6ebe5a3ce297fd429c3e17db9d1f9c6, type: 2}
       propertyPath: m_LocalRotation.z
@@ -6088,7 +6088,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4453462352064714, guid: d6ebe5a3ce297fd429c3e17db9d1f9c6, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4453462352064714, guid: d6ebe5a3ce297fd429c3e17db9d1f9c6, type: 2}
       propertyPath: m_RootOrder
@@ -6097,6 +6097,10 @@ Prefab:
     - target: {fileID: 1107445603698040, guid: d6ebe5a3ce297fd429c3e17db9d1f9c6, type: 2}
       propertyPath: m_Name
       value: Stone_Corner
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453462352064714, guid: d6ebe5a3ce297fd429c3e17db9d1f9c6, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6ebe5a3ce297fd429c3e17db9d1f9c6, type: 2}
