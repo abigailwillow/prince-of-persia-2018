@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class FPSController : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class FPSController : MonoBehaviour
     public float jumpStrength = 6f;
     public float mouseSensitivity = 2f;
     public float playerGravity = 20f;
+    public float ReachDistance = 1f;
+    public float ReachSmooth = 0.1f;
+    public float ReachTime = 0.2f;
     //public float cameraSmooth = 0.1f;
     //public float maxCameraMove = 1f;
     public Transform headBone;
@@ -15,6 +19,9 @@ public class FPSController : MonoBehaviour
     public LedgeGrabber hangScript;
     public TextMeshProUGUI debugGUI;
     public Animator ViewmodelAnimator;
+    public float HitCooldown = 1f;
+    public float CrouchDelta = 0.75f;
+    public static bool IsCursorLocked;
 
     float movementH;
     float movementV;
@@ -25,9 +32,9 @@ public class FPSController : MonoBehaviour
     Vector3 deltaMovement = Vector3.zero;
     Animator anim;
     Vector3 lastMove;
-    ButtonController ButtonScript;
-    bool isCursorLocked;
     CharacterController ply;
+    float NextHit = 0f;
+    bool DebugMode = false;
 
     [HideInInspector]
     public bool isGrounded = true;
@@ -38,22 +45,21 @@ public class FPSController : MonoBehaviour
     {
         ply = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
-        ButtonScript = GetComponent<ButtonController>();
-        setCursorLocked(true);
+        SetCursorLocked(true);
         headBone.transform.eulerAngles = curRotation;
     }
 
-    public void setCursorLocked(bool boolean)
+    public static void SetCursorLocked(bool boolean)
     {
         if (boolean)
         {
             Cursor.lockState = CursorLockMode.Locked;
-            isCursorLocked = true;
+            IsCursorLocked = true;
         }
         else
         {
             Cursor.lockState = CursorLockMode.None;
-            isCursorLocked = false;
+            IsCursorLocked = false;
         }
     }
 
@@ -81,7 +87,7 @@ public class FPSController : MonoBehaviour
         movementH = Input.GetAxisRaw("Horizontal");
         movementV = Input.GetAxisRaw("Vertical");
 
-        if (isCursorLocked)
+        if (IsCursorLocked)
         {
             rotationX = Input.GetAxis("Mouse X") * mouseSensitivity;
             rotationY = Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -90,6 +96,11 @@ public class FPSController : MonoBehaviour
         {
             rotationX = 0;
             rotationY = 0;
+        }
+
+        if (!IsCursorLocked && Input.GetButtonDown("Fire1") && !PauseMenuManager.GamePaused)
+        {
+            SetCursorLocked(true);
         }
 
         curRotation.x -= rotationY;
@@ -105,22 +116,22 @@ public class FPSController : MonoBehaviour
 
         if (Input.GetButtonDown("Debug")) // Debug Mode
         {
-            if (ButtonScript.debugMode)
+            if (DebugMode)
             {
-                ButtonScript.debugMode = false;
+                DebugMode = false;
                 movementSpeed *= 0.5f;
                 verticalVelocity = 0f;
             }
             else
             {
-                ButtonScript.debugMode = true;
+                DebugMode = true;
                 movementSpeed *= 2f;
                 verticalVelocity = 0f;
                 isGrounded = false;
             }
         }
 
-        if (ButtonScript.debugMode)
+        if (DebugMode)
         {
             if (Input.GetButton("Jump"))
             {
@@ -170,9 +181,54 @@ public class FPSController : MonoBehaviour
 
         ply.Move(deltaMovement * Time.deltaTime);
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && Time.time >= NextHit && !PauseMenuManager.GamePaused)
         {
+            NextHit = Time.time + HitCooldown;
             ViewmodelAnimator.SetTrigger("Attack");
         }
+
+        if (Input.GetButtonDown("Crouch"))
+        {
+            BoxCollider HitBox = GetComponent<BoxCollider>();
+            ply.height -= CrouchDelta;
+            ply.center -= new Vector3(0, CrouchDelta / 2, 0);
+
+            HitBox.size -= new Vector3(0, CrouchDelta, 0);
+            HitBox.center -= new Vector3(0, CrouchDelta / 2, 0);
+
+            FirstPersonCamera.transform.position -= new Vector3(0, CrouchDelta, 0);
+        }
+
+        if (Input.GetButtonUp("Crouch"))
+        {
+            BoxCollider HitBox = GetComponent<BoxCollider>();
+            ply.height += CrouchDelta;
+            ply.center += new Vector3(0, CrouchDelta / 2, 0);
+
+            HitBox.size += new Vector3(0, CrouchDelta, 0);
+            HitBox.center += new Vector3(0, CrouchDelta / 2, 0);
+
+            FirstPersonCamera.transform.position += new Vector3(0, CrouchDelta, 0);
+        }
+
+        if (Input.GetButtonDown("Use"))
+        {
+            RaycastHit FoundItem;
+            if (Physics.Raycast(FirstPersonCamera.transform.position, FirstPersonCamera.transform.forward, out FoundItem, ReachDistance))
+            {
+            }
+        }
     }
+
+    /*IEnumerator LedgePull(RaycastHit FoundItem)
+    {
+        Vector3 Origin = transform.position;
+        float TimeElapsed = 0f;
+        while (TimeElapsed < ReachTime)
+        {
+            transform.position = Vector3.Lerp(Origin, new Vector3(Origin.x, FoundItem.transform.position.y, Origin.z) - transform.GetComponent<BoxCollider>().size / 2, TimeElapsed / ReachTime);
+            TimeElapsed += Time.deltaTime;
+            yield return null;
+        }
+    }*/
 }

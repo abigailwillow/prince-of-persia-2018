@@ -21,6 +21,8 @@ public class MainMenuManager : MonoBehaviour {
 
     void Awake()
     {
+        AudioListener.pause = false;
+
         List<string> QualityLevels = new List<string>(QualitySettings.names);
         QualityDropdown.AddOptions(QualityLevels);
         QualityDropdown.value = QualitySettings.GetQualityLevel();
