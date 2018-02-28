@@ -166,6 +166,7 @@ ModelImporter:
     7400006: Walk
     7400008: _T-Pose
     7400010: Idle
+    7400012: Armature|Run
     9500000: //RootNode
     13700000: EnemyMesh
   materials:

@@ -119,7 +119,7 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Mouse ScrollWheel
-    descriptiveName: (unused)
+    descriptiveName: Deprecated
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -151,7 +151,7 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Reload
-    descriptiveName: Reload World
+    descriptiveName: Deprecated
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: r
@@ -200,6 +200,22 @@ InputManager:
   - serializedVersion: 3
     m_Name: Menu
     descriptiveName: Menu Button
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: tab
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.001
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Use
+    descriptiveName: Use items
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: e

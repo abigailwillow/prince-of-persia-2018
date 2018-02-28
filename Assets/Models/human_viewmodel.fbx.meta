@@ -157,7 +157,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.24629286
+        functionName: PlaySound
+        data: Sword_Swing
+        objectReferenceParameter: {fileID: 11500000, guid: 587d82c5b06a72a42900161dfb298e96,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.3320204
+        functionName: Attack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 6d140b514600dd647a8bf4224835fa1c,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
