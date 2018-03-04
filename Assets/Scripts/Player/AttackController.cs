@@ -10,7 +10,10 @@ public class AttackController : MonoBehaviour
     public string EnemyHitSound = "Grunt_Temp";
     public string WorldHitSound = "Sword_Clang";
     public GameObject BloodEmitter;
+    public GameObject DustEmitter;
     public float SmoothFactor = 0.5f;
+    public float HitStrength = 10000f;
+    public LayerMask RaycastMask;
 
     Quaternion DesiredRotation;
     SoundManager VMSounds;
@@ -34,22 +37,41 @@ public class AttackController : MonoBehaviour
     public void Attack()
     {
         RaycastHit SwordHit;
-        if (Physics.Raycast(FirstPersonCamera.transform.position, FirstPersonCamera.transform.forward, out SwordHit, HitDistance))
+        if (Physics.Raycast(FirstPersonCamera.transform.position, FirstPersonCamera.transform.forward, out SwordHit, HitDistance, RaycastMask))
         {
             if (SwordHit.transform.tag == "Attackable")
             {
-                SoundSource.transform.position = SwordHit.point;
-                VMSounds.PlaySound(EnemyHitSound);
-                SoundSource.transform.localPosition = SoundOrigin;
-                StartCoroutine(Knockback(SwordHit));
-                GameObject ParticleEmitter = Instantiate(BloodEmitter, SwordHit.point, Quaternion.LookRotation(SwordHit.normal));
-                StartCoroutine(GCParticles(ParticleEmitter));
+                AIController enemy = SwordHit.transform.GetComponent<AIController>();
+                if (!enemy.Blocking)
+                {
+                    SoundSource.transform.position = SwordHit.point;
+                    VMSounds.PlaySound(EnemyHitSound);
+                    SoundSource.transform.localPosition = SoundOrigin;
+                    StartCoroutine(Knockback(SwordHit));
+                    GameObject ParticleEmitter = Instantiate(BloodEmitter, SwordHit.point, Quaternion.LookRotation(SwordHit.normal));
+                    StartCoroutine(GCParticles(ParticleEmitter));
+                    enemy.HitDamaged();
+                }
+                else
+                {
+                    SoundSource.transform.position = SwordHit.point;
+                    VMSounds.PlaySound(WorldHitSound);
+                    SoundSource.transform.localPosition = SoundOrigin;
+                    GameObject ParticleEmitter = Instantiate(DustEmitter, SwordHit.point, Quaternion.LookRotation(SwordHit.normal));
+                    StartCoroutine(GCParticles(ParticleEmitter));
+                }
             }
             else
             {
                 SoundSource.transform.position = SwordHit.point;
                 VMSounds.PlaySound(WorldHitSound);
                 SoundSource.transform.localPosition = SoundOrigin;
+                GameObject ParticleEmitter = Instantiate(DustEmitter, SwordHit.point, Quaternion.LookRotation(SwordHit.normal));
+                StartCoroutine(GCParticles(ParticleEmitter));
+                if (SwordHit.transform.tag == "Hittable")
+                {
+                    SwordHit.transform.GetComponent<Rigidbody>().AddForce(FirstPersonCamera.transform.forward * HitStrength);
+                }
             }
         }
     }

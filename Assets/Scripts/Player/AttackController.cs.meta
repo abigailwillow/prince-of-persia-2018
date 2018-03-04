@@ -1,10 +1,15 @@
 fileFormatVersion: 2
 guid: 6d2a696d6f383b1409946df318caa5c8
-timeCreated: 1519639695
+timeCreated: 1519904142
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - FirstPersonCamera: {instanceID: 0}
+  - BloodEmitter: {fileID: 1426737880006200, guid: c8e2ce862472b6d438bfefd208650726,
+      type: 2}
+  - DustEmitter: {fileID: 1541328214971790, guid: 2b6d64da3d7e76a4789dff88a7899f49,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

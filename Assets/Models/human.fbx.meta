@@ -81,6 +81,19 @@ ModelImporter:
     100146: Upper_Arm.R
     100148: Upper_Leg.L
     100150: Upper_Leg.R
+    100152: Cylinder.000
+    100154: Cylinder.001
+    100156: Cylinder.002
+    100158: Cylinder.003
+    100160: Cylinder.004
+    100162: Cylinder.005
+    100164: Cylinder.006
+    100166: Cylinder.008
+    100168: Cylinder.009
+    100170: Cylinder.010
+    100172: Cylinder.011
+    100174: Cylinder.012
+    100176: Cylinder.013
     400000: //RootNode
     400002: Armature
     400004: EnemyMesh
@@ -157,21 +170,77 @@ ModelImporter:
     400146: Upper_Arm.R
     400148: Upper_Leg.L
     400150: Upper_Leg.R
+    400152: Cylinder.000
+    400154: Cylinder.001
+    400156: Cylinder.002
+    400158: Cylinder.003
+    400160: Cylinder.004
+    400162: Cylinder.005
+    400164: Cylinder.006
+    400166: Cylinder.008
+    400168: Cylinder.009
+    400170: Cylinder.010
+    400172: Cylinder.011
+    400174: Cylinder.012
+    400176: Cylinder.013
     2300000: //RootNode
+    2300002: Cylinder.000
+    2300004: Cylinder.001
+    2300006: Cylinder.002
+    2300008: Cylinder.003
+    2300010: Cylinder.004
+    2300012: Cylinder.005
+    2300014: Cylinder.006
+    2300016: Cylinder.008
+    2300018: Cylinder.009
+    2300020: Cylinder.010
+    2300022: Cylinder.011
+    2300024: Cylinder.012
+    2300026: Cylinder.013
     3300000: //RootNode
+    3300002: Cylinder.000
+    3300004: Cylinder.001
+    3300006: Cylinder.002
+    3300008: Cylinder.003
+    3300010: Cylinder.004
+    3300012: Cylinder.005
+    3300014: Cylinder.006
+    3300016: Cylinder.008
+    3300018: Cylinder.009
+    3300020: Cylinder.010
+    3300022: Cylinder.011
+    3300024: Cylinder.012
+    3300026: Cylinder.013
     4300000: EnemyMesh
+    4300002: Cylinder.013
+    4300004: Cylinder.012
+    4300006: Cylinder.011
+    4300008: Cylinder.010
+    4300010: Cylinder.009
+    4300012: Cylinder.000
+    4300014: Cylinder.008
+    4300016: Cylinder.006
+    4300018: Cylinder.005
+    4300020: Cylinder.004
+    4300022: Cylinder.003
+    4300024: Cylinder.002
+    4300026: Cylinder.001
     7400000: EnemyMesh|T-Pose
-    7400002: Run
+    7400002: W_Run
     7400004: Armature|T-Pose
-    7400006: Walk
+    7400006: W_Walk
     7400008: _T-Pose
-    7400010: Idle
+    7400010: W_Idle
     7400012: Armature|Run
+    7400014: W_Attack_L
+    7400016: W_Block_L
+    7400018: W_Attack
+    7400020: W_Block
     9500000: //RootNode
     13700000: EnemyMesh
   materials:
     importMaterials: 1
-    materialName: 0
+    materialName: 1
     materialSearch: 1
   animations:
     legacyGenerateAnimations: 4
@@ -193,7 +262,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Run
+      name: W_Run
       takeName: Armature|Run
       firstFrame: 0
       lastFrame: 48
@@ -389,7 +458,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Walk
+      name: W_Walk
       takeName: Armature|Walk
       firstFrame: 0
       lastFrame: 90
@@ -585,7 +654,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Idle
+      name: W_Idle
       takeName: Armature|Idle
       firstFrame: 0
       lastFrame: 128
@@ -608,6 +677,742 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Hips
+        weight: 1
+      - path: Armature/Hips/Spine
+        weight: 1
+      - path: Armature/Hips/Spine/Neck
+        weight: 1
+      - path: Armature/Hips/Spine/Neck/Head
+        weight: 1
+      - path: Armature/Hips/Spine/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Index_Finger_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Index_Finger_Proximal.L/Index_Finger_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Index_Finger_Proximal.L/Index_Finger_Intermediate.L/Index_Finger_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Index_Finger_Proximal.L/Index_Finger_Intermediate.L/Index_Finger_Distal.L/Index_Finger_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Little_Finger_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Little_Finger_Proximal.L/Little_Finger_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Little_Finger_Proximal.L/Little_Finger_Intermediate.L/Little_Finger_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Little_Finger_Proximal.L/Little_Finger_Intermediate.L/Little_Finger_Distal.L/Little_Finger_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Middle_Finger_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Middle_Finger_Proximal.L/Middle_Finger_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Middle_Finger_Proximal.L/Middle_Finger_Intermediate.L/Middle_Finger_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Middle_Finger_Proximal.L/Middle_Finger_Intermediate.L/Middle_Finger_Distal.L/Middle_Finger_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Ring_Finger_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Ring_Finger_Proximal.L/Ring_Finger_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Ring_Finger_Proximal.L/Ring_Finger_Intermediate.L/Ring_Finger_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Ring_Finger_Proximal.L/Ring_Finger_Intermediate.L/Ring_Finger_Distal.L/Ring_Finger_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Thumb_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Thumb_Proximal.L/Thumb_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Thumb_Proximal.L/Thumb_Intermediate.L/Thumb_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Thumb_Proximal.L/Thumb_Intermediate.L/Thumb_Distal.L/Thumb_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Index_Finger_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Index_Finger_Proximal.R/Index_Finger_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Index_Finger_Proximal.R/Index_Finger_Intermediate.R/Index_Finger_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Index_Finger_Proximal.R/Index_Finger_Intermediate.R/Index_Finger_Distal.R/Index_Finger_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Little_Finger_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Little_Finger_Proximal.R/Little_Finger_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Little_Finger_Proximal.R/Little_Finger_Intermediate.R/Little_Finger_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Little_Finger_Proximal.R/Little_Finger_Intermediate.R/Little_Finger_Distal.R/Little_Finger_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Middle_Finger_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Middle_Finger_Proximal.R/Middle_Finger_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Middle_Finger_Proximal.R/Middle_Finger_Intermediate.R/Middle_Finger_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Middle_Finger_Proximal.R/Middle_Finger_Intermediate.R/Middle_Finger_Distal.R/Middle_Finger_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Ring_Finger_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Ring_Finger_Proximal.R/Ring_Finger_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Ring_Finger_Proximal.R/Ring_Finger_Intermediate.R/Ring_Finger_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Ring_Finger_Proximal.R/Ring_Finger_Intermediate.R/Ring_Finger_Distal.R/Ring_Finger_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Thumb_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Thumb_Proximal.R/Thumb_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Thumb_Proximal.R/Thumb_Intermediate.R/Thumb_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Thumb_Proximal.R/Thumb_Intermediate.R/Thumb_Distal.R/Thumb_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.L/Lower_Leg.L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.L/Lower_Leg.L/Lower_Leg.L_end
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.R/Lower_Leg.R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.R/Lower_Leg.R/Lower_Leg.R_end
+        weight: 1
+      - path: Armature/Leg_Control.L
+        weight: 1
+      - path: Armature/Leg_Control.L/Foot.L
+        weight: 1
+      - path: Armature/Leg_Control.L/Foot.L/Toes.L
+        weight: 1
+      - path: Armature/Leg_Control.L/Foot.L/Toes.L/Toes.L_end
+        weight: 1
+      - path: Armature/Leg_Control.L/Leg_IK.L
+        weight: 1
+      - path: Armature/Leg_Control.L/Leg_IK.L/Leg_IK.L_end
+        weight: 1
+      - path: Armature/Leg_Control.R
+        weight: 1
+      - path: Armature/Leg_Control.R/Foot.R
+        weight: 1
+      - path: Armature/Leg_Control.R/Foot.R/Toes.R
+        weight: 1
+      - path: Armature/Leg_Control.R/Foot.R/Toes.R/Toes.R_end
+        weight: 1
+      - path: Armature/Leg_Control.R/Leg_IK.R
+        weight: 1
+      - path: Armature/Leg_Control.R/Leg_IK.R/Leg_IK.R_end
+        weight: 1
+      - path: Armature/Leg_Pole_Target.L
+        weight: 1
+      - path: Armature/Leg_Pole_Target.L/Leg_Pole_Target.L_end
+        weight: 1
+      - path: Armature/Leg_Pole_Target.R
+        weight: 1
+      - path: Armature/Leg_Pole_Target.R/Leg_Pole_Target.R_end
+        weight: 1
+      - path: EnemyMesh
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: W_Attack_L
+      takeName: Armature|Attack
+      firstFrame: 0
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Hips
+        weight: 1
+      - path: Armature/Hips/Spine
+        weight: 1
+      - path: Armature/Hips/Spine/Neck
+        weight: 1
+      - path: Armature/Hips/Spine/Neck/Head
+        weight: 1
+      - path: Armature/Hips/Spine/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Index_Finger_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Index_Finger_Proximal.L/Index_Finger_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Index_Finger_Proximal.L/Index_Finger_Intermediate.L/Index_Finger_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Index_Finger_Proximal.L/Index_Finger_Intermediate.L/Index_Finger_Distal.L/Index_Finger_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Little_Finger_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Little_Finger_Proximal.L/Little_Finger_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Little_Finger_Proximal.L/Little_Finger_Intermediate.L/Little_Finger_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Little_Finger_Proximal.L/Little_Finger_Intermediate.L/Little_Finger_Distal.L/Little_Finger_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Middle_Finger_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Middle_Finger_Proximal.L/Middle_Finger_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Middle_Finger_Proximal.L/Middle_Finger_Intermediate.L/Middle_Finger_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Middle_Finger_Proximal.L/Middle_Finger_Intermediate.L/Middle_Finger_Distal.L/Middle_Finger_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Ring_Finger_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Ring_Finger_Proximal.L/Ring_Finger_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Ring_Finger_Proximal.L/Ring_Finger_Intermediate.L/Ring_Finger_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Ring_Finger_Proximal.L/Ring_Finger_Intermediate.L/Ring_Finger_Distal.L/Ring_Finger_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Thumb_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Thumb_Proximal.L/Thumb_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Thumb_Proximal.L/Thumb_Intermediate.L/Thumb_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Thumb_Proximal.L/Thumb_Intermediate.L/Thumb_Distal.L/Thumb_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Index_Finger_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Index_Finger_Proximal.R/Index_Finger_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Index_Finger_Proximal.R/Index_Finger_Intermediate.R/Index_Finger_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Index_Finger_Proximal.R/Index_Finger_Intermediate.R/Index_Finger_Distal.R/Index_Finger_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Little_Finger_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Little_Finger_Proximal.R/Little_Finger_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Little_Finger_Proximal.R/Little_Finger_Intermediate.R/Little_Finger_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Little_Finger_Proximal.R/Little_Finger_Intermediate.R/Little_Finger_Distal.R/Little_Finger_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Middle_Finger_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Middle_Finger_Proximal.R/Middle_Finger_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Middle_Finger_Proximal.R/Middle_Finger_Intermediate.R/Middle_Finger_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Middle_Finger_Proximal.R/Middle_Finger_Intermediate.R/Middle_Finger_Distal.R/Middle_Finger_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Ring_Finger_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Ring_Finger_Proximal.R/Ring_Finger_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Ring_Finger_Proximal.R/Ring_Finger_Intermediate.R/Ring_Finger_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Ring_Finger_Proximal.R/Ring_Finger_Intermediate.R/Ring_Finger_Distal.R/Ring_Finger_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Thumb_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Thumb_Proximal.R/Thumb_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Thumb_Proximal.R/Thumb_Intermediate.R/Thumb_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Thumb_Proximal.R/Thumb_Intermediate.R/Thumb_Distal.R/Thumb_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.L/Lower_Leg.L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.L/Lower_Leg.L/Lower_Leg.L_end
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.R/Lower_Leg.R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.R/Lower_Leg.R/Lower_Leg.R_end
+        weight: 1
+      - path: Armature/Leg_Control.L
+        weight: 1
+      - path: Armature/Leg_Control.L/Foot.L
+        weight: 1
+      - path: Armature/Leg_Control.L/Foot.L/Toes.L
+        weight: 1
+      - path: Armature/Leg_Control.L/Foot.L/Toes.L/Toes.L_end
+        weight: 1
+      - path: Armature/Leg_Control.L/Leg_IK.L
+        weight: 1
+      - path: Armature/Leg_Control.L/Leg_IK.L/Leg_IK.L_end
+        weight: 1
+      - path: Armature/Leg_Control.R
+        weight: 1
+      - path: Armature/Leg_Control.R/Foot.R
+        weight: 1
+      - path: Armature/Leg_Control.R/Foot.R/Toes.R
+        weight: 1
+      - path: Armature/Leg_Control.R/Foot.R/Toes.R/Toes.R_end
+        weight: 1
+      - path: Armature/Leg_Control.R/Leg_IK.R
+        weight: 1
+      - path: Armature/Leg_Control.R/Leg_IK.R/Leg_IK.R_end
+        weight: 1
+      - path: Armature/Leg_Pole_Target.L
+        weight: 1
+      - path: Armature/Leg_Pole_Target.L/Leg_Pole_Target.L_end
+        weight: 1
+      - path: Armature/Leg_Pole_Target.R
+        weight: 1
+      - path: Armature/Leg_Pole_Target.R/Leg_Pole_Target.R_end
+        weight: 1
+      - path: EnemyMesh
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: W_Block_L
+      takeName: Armature|Block
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Hips
+        weight: 1
+      - path: Armature/Hips/Spine
+        weight: 1
+      - path: Armature/Hips/Spine/Neck
+        weight: 1
+      - path: Armature/Hips/Spine/Neck/Head
+        weight: 1
+      - path: Armature/Hips/Spine/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Index_Finger_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Index_Finger_Proximal.L/Index_Finger_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Index_Finger_Proximal.L/Index_Finger_Intermediate.L/Index_Finger_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Index_Finger_Proximal.L/Index_Finger_Intermediate.L/Index_Finger_Distal.L/Index_Finger_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Little_Finger_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Little_Finger_Proximal.L/Little_Finger_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Little_Finger_Proximal.L/Little_Finger_Intermediate.L/Little_Finger_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Little_Finger_Proximal.L/Little_Finger_Intermediate.L/Little_Finger_Distal.L/Little_Finger_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Middle_Finger_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Middle_Finger_Proximal.L/Middle_Finger_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Middle_Finger_Proximal.L/Middle_Finger_Intermediate.L/Middle_Finger_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Middle_Finger_Proximal.L/Middle_Finger_Intermediate.L/Middle_Finger_Distal.L/Middle_Finger_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Ring_Finger_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Ring_Finger_Proximal.L/Ring_Finger_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Ring_Finger_Proximal.L/Ring_Finger_Intermediate.L/Ring_Finger_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Ring_Finger_Proximal.L/Ring_Finger_Intermediate.L/Ring_Finger_Distal.L/Ring_Finger_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Thumb_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Thumb_Proximal.L/Thumb_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Thumb_Proximal.L/Thumb_Intermediate.L/Thumb_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Thumb_Proximal.L/Thumb_Intermediate.L/Thumb_Distal.L/Thumb_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Index_Finger_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Index_Finger_Proximal.R/Index_Finger_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Index_Finger_Proximal.R/Index_Finger_Intermediate.R/Index_Finger_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Index_Finger_Proximal.R/Index_Finger_Intermediate.R/Index_Finger_Distal.R/Index_Finger_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Little_Finger_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Little_Finger_Proximal.R/Little_Finger_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Little_Finger_Proximal.R/Little_Finger_Intermediate.R/Little_Finger_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Little_Finger_Proximal.R/Little_Finger_Intermediate.R/Little_Finger_Distal.R/Little_Finger_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Middle_Finger_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Middle_Finger_Proximal.R/Middle_Finger_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Middle_Finger_Proximal.R/Middle_Finger_Intermediate.R/Middle_Finger_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Middle_Finger_Proximal.R/Middle_Finger_Intermediate.R/Middle_Finger_Distal.R/Middle_Finger_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Ring_Finger_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Ring_Finger_Proximal.R/Ring_Finger_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Ring_Finger_Proximal.R/Ring_Finger_Intermediate.R/Ring_Finger_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Ring_Finger_Proximal.R/Ring_Finger_Intermediate.R/Ring_Finger_Distal.R/Ring_Finger_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Thumb_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Thumb_Proximal.R/Thumb_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Thumb_Proximal.R/Thumb_Intermediate.R/Thumb_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Thumb_Proximal.R/Thumb_Intermediate.R/Thumb_Distal.R/Thumb_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.L/Lower_Leg.L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.L/Lower_Leg.L/Lower_Leg.L_end
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.R/Lower_Leg.R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.R/Lower_Leg.R/Lower_Leg.R_end
+        weight: 1
+      - path: Armature/Leg_Control.L
+        weight: 1
+      - path: Armature/Leg_Control.L/Foot.L
+        weight: 1
+      - path: Armature/Leg_Control.L/Foot.L/Toes.L
+        weight: 1
+      - path: Armature/Leg_Control.L/Foot.L/Toes.L/Toes.L_end
+        weight: 1
+      - path: Armature/Leg_Control.L/Leg_IK.L
+        weight: 1
+      - path: Armature/Leg_Control.L/Leg_IK.L/Leg_IK.L_end
+        weight: 1
+      - path: Armature/Leg_Control.R
+        weight: 1
+      - path: Armature/Leg_Control.R/Foot.R
+        weight: 1
+      - path: Armature/Leg_Control.R/Foot.R/Toes.R
+        weight: 1
+      - path: Armature/Leg_Control.R/Foot.R/Toes.R/Toes.R_end
+        weight: 1
+      - path: Armature/Leg_Control.R/Leg_IK.R
+        weight: 1
+      - path: Armature/Leg_Control.R/Leg_IK.R/Leg_IK.R_end
+        weight: 1
+      - path: Armature/Leg_Pole_Target.L
+        weight: 1
+      - path: Armature/Leg_Pole_Target.L/Leg_Pole_Target.L_end
+        weight: 1
+      - path: Armature/Leg_Pole_Target.R
+        weight: 1
+      - path: Armature/Leg_Pole_Target.R/Leg_Pole_Target.R_end
+        weight: 1
+      - path: EnemyMesh
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: W_Attack
+      takeName: Armature|Attack
+      firstFrame: 0
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.39700374
+        functionName: Attack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 6f713d6e760e41f4dac107f015460ac8,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Hips
+        weight: 1
+      - path: Armature/Hips/Spine
+        weight: 1
+      - path: Armature/Hips/Spine/Neck
+        weight: 1
+      - path: Armature/Hips/Spine/Neck/Head
+        weight: 1
+      - path: Armature/Hips/Spine/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Index_Finger_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Index_Finger_Proximal.L/Index_Finger_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Index_Finger_Proximal.L/Index_Finger_Intermediate.L/Index_Finger_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Index_Finger_Proximal.L/Index_Finger_Intermediate.L/Index_Finger_Distal.L/Index_Finger_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Little_Finger_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Little_Finger_Proximal.L/Little_Finger_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Little_Finger_Proximal.L/Little_Finger_Intermediate.L/Little_Finger_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Little_Finger_Proximal.L/Little_Finger_Intermediate.L/Little_Finger_Distal.L/Little_Finger_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Middle_Finger_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Middle_Finger_Proximal.L/Middle_Finger_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Middle_Finger_Proximal.L/Middle_Finger_Intermediate.L/Middle_Finger_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Middle_Finger_Proximal.L/Middle_Finger_Intermediate.L/Middle_Finger_Distal.L/Middle_Finger_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Ring_Finger_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Ring_Finger_Proximal.L/Ring_Finger_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Ring_Finger_Proximal.L/Ring_Finger_Intermediate.L/Ring_Finger_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Ring_Finger_Proximal.L/Ring_Finger_Intermediate.L/Ring_Finger_Distal.L/Ring_Finger_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Thumb_Proximal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Thumb_Proximal.L/Thumb_Intermediate.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Thumb_Proximal.L/Thumb_Intermediate.L/Thumb_Distal.L
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.L/Lower_Arm.L/Hand.L/Thumb_Proximal.L/Thumb_Intermediate.L/Thumb_Distal.L/Thumb_Distal.L_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Index_Finger_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Index_Finger_Proximal.R/Index_Finger_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Index_Finger_Proximal.R/Index_Finger_Intermediate.R/Index_Finger_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Index_Finger_Proximal.R/Index_Finger_Intermediate.R/Index_Finger_Distal.R/Index_Finger_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Little_Finger_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Little_Finger_Proximal.R/Little_Finger_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Little_Finger_Proximal.R/Little_Finger_Intermediate.R/Little_Finger_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Little_Finger_Proximal.R/Little_Finger_Intermediate.R/Little_Finger_Distal.R/Little_Finger_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Middle_Finger_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Middle_Finger_Proximal.R/Middle_Finger_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Middle_Finger_Proximal.R/Middle_Finger_Intermediate.R/Middle_Finger_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Middle_Finger_Proximal.R/Middle_Finger_Intermediate.R/Middle_Finger_Distal.R/Middle_Finger_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Ring_Finger_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Ring_Finger_Proximal.R/Ring_Finger_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Ring_Finger_Proximal.R/Ring_Finger_Intermediate.R/Ring_Finger_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Ring_Finger_Proximal.R/Ring_Finger_Intermediate.R/Ring_Finger_Distal.R/Ring_Finger_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Thumb_Proximal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Thumb_Proximal.R/Thumb_Intermediate.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Thumb_Proximal.R/Thumb_Intermediate.R/Thumb_Distal.R
+        weight: 1
+      - path: Armature/Hips/Spine/Upper_Arm.R/Lower_Arm.R/Hand.R/Thumb_Proximal.R/Thumb_Intermediate.R/Thumb_Distal.R/Thumb_Distal.R_end
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.L/Lower_Leg.L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.L/Lower_Leg.L/Lower_Leg.L_end
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.R/Lower_Leg.R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg.R/Lower_Leg.R/Lower_Leg.R_end
+        weight: 1
+      - path: Armature/Leg_Control.L
+        weight: 1
+      - path: Armature/Leg_Control.L/Foot.L
+        weight: 1
+      - path: Armature/Leg_Control.L/Foot.L/Toes.L
+        weight: 1
+      - path: Armature/Leg_Control.L/Foot.L/Toes.L/Toes.L_end
+        weight: 1
+      - path: Armature/Leg_Control.L/Leg_IK.L
+        weight: 1
+      - path: Armature/Leg_Control.L/Leg_IK.L/Leg_IK.L_end
+        weight: 1
+      - path: Armature/Leg_Control.R
+        weight: 1
+      - path: Armature/Leg_Control.R/Foot.R
+        weight: 1
+      - path: Armature/Leg_Control.R/Foot.R/Toes.R
+        weight: 1
+      - path: Armature/Leg_Control.R/Foot.R/Toes.R/Toes.R_end
+        weight: 1
+      - path: Armature/Leg_Control.R/Leg_IK.R
+        weight: 1
+      - path: Armature/Leg_Control.R/Leg_IK.R/Leg_IK.R_end
+        weight: 1
+      - path: Armature/Leg_Pole_Target.L
+        weight: 1
+      - path: Armature/Leg_Pole_Target.L/Leg_Pole_Target.L_end
+        weight: 1
+      - path: Armature/Leg_Pole_Target.R
+        weight: 1
+      - path: Armature/Leg_Pole_Target.R/Leg_Pole_Target.R_end
+        weight: 1
+      - path: EnemyMesh
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: W_Block
+      takeName: Armature|Block
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.07023411
+        functionName: Block
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 6f713d6e760e41f4dac107f015460ac8,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
