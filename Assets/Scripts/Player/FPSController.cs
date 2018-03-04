@@ -16,12 +16,20 @@ public class FPSController : MonoBehaviour
     //public float maxCameraMove = 1f;
     public Transform headBone;
     public Camera FirstPersonCamera;
-    public LedgeGrabber hangScript;
     public TextMeshProUGUI debugGUI;
     public Animator ViewmodelAnimator;
     public float HitCooldown = 1f;
+    public float BlockCooldown = 0.75f;
     public float CrouchDelta = 0.75f;
+    public HeartLocator HealthCanvas;
+    public Sprite HeartEmpty;
+    public GameObject PlayerRagdoll;
+    public GameObject GameOverScreen;
+
     public static bool IsCursorLocked;
+    public bool Attacking;
+    public bool Blocking;
+    public static int Health = 3;
 
     float movementH;
     float movementV;
@@ -29,17 +37,17 @@ public class FPSController : MonoBehaviour
     float rotationY;
     float curMultiplier = 0f;
     Vector3 curRotation = Vector3.zero;
-    Vector3 deltaMovement = Vector3.zero;
     Animator anim;
     Vector3 lastMove;
     CharacterController ply;
     float NextHit = 0f;
+    float NextBlock = 0f;
     bool DebugMode = false;
 
-    [HideInInspector]
-    public bool isGrounded = true;
-    [HideInInspector]
-    public float verticalVelocity;
+    [HideInInspector] public Vector3 deltaMovement = Vector3.zero;
+    [HideInInspector] public bool Hanging;
+    [HideInInspector] public bool isGrounded = true;
+    [HideInInspector] public float verticalVelocity;
 
     void Awake()
     {
@@ -47,6 +55,7 @@ public class FPSController : MonoBehaviour
         anim = GetComponent<Animator>();
         SetCursorLocked(true);
         headBone.transform.eulerAngles = curRotation;
+        Health = 3;
     }
 
     public static void SetCursorLocked(bool boolean)
@@ -84,6 +93,7 @@ public class FPSController : MonoBehaviour
             ViewmodelAnimator.SetFloat("MoveSpeed", 2f);
             curMultiplier = runMultiplier;
         }
+
         movementH = Input.GetAxisRaw("Horizontal");
         movementV = Input.GetAxisRaw("Vertical");
 
@@ -147,12 +157,12 @@ public class FPSController : MonoBehaviour
         }
         else
         {
-            if (hangScript.Hanging) // Hanging/climbing
+            if (Hanging) // Hanging/climbing
             {
-                isGrounded = hangScript.Hanging;
+                isGrounded = Hanging;
             }
 
-            if (ply.isGrounded != isGrounded && !hangScript.Hanging)
+            if (ply.isGrounded != isGrounded && !Hanging)
             {
                 isGrounded = ply.isGrounded;
             }
@@ -169,10 +179,6 @@ public class FPSController : MonoBehaviour
                 verticalVelocity -= playerGravity * Time.deltaTime;
             }
             deltaMovement.y = verticalVelocity;
-            if (hangScript.Hanging)
-            {
-                deltaMovement.y = Mathf.Max(deltaMovement.y, 0);
-            }
         }
 
         //print("x = " + deltaMovement.x + "; z = " + deltaMovement.z);
@@ -181,11 +187,33 @@ public class FPSController : MonoBehaviour
 
         ply.Move(deltaMovement * Time.deltaTime);
 
-        if (Input.GetButtonDown("Fire1") && Time.time >= NextHit && !PauseMenuManager.GamePaused)
+        if (Input.GetButtonDown("Fire1") && Time.time >= NextHit && !PauseMenuManager.GamePaused && !Blocking) // Attack
         {
+            Attacking = true;
             NextHit = Time.time + HitCooldown;
             ViewmodelAnimator.SetTrigger("Attack");
+            anim.SetTrigger("Attack");
         }
+
+        if (Time.time >= NextHit)
+        {
+            Attacking = false;
+        }
+
+        if (Input.GetButtonDown("Fire2") && Time.time >= NextBlock && !PauseMenuManager.GamePaused && !Attacking) // Block
+        {
+            Blocking = true;
+            NextBlock = Time.time + BlockCooldown;
+            ViewmodelAnimator.SetTrigger("Block");
+            anim.SetTrigger("Block");
+        }
+
+        if (Time.time >= NextBlock)
+        {
+            Blocking = false;
+        }
+
+        //print("attacking = " + Attacking + "; blocking = " + Blocking);
 
         if (Input.GetButtonDown("Crouch"))
         {
@@ -217,18 +245,60 @@ public class FPSController : MonoBehaviour
             if (Physics.Raycast(FirstPersonCamera.transform.position, FirstPersonCamera.transform.forward, out FoundItem, ReachDistance))
             {
             }
+            HitDeath();
         }
     }
 
-    /*IEnumerator LedgePull(RaycastHit FoundItem)
+    public void SetAttacking(bool AttackState)
     {
-        Vector3 Origin = transform.position;
-        float TimeElapsed = 0f;
-        while (TimeElapsed < ReachTime)
+        Attacking = AttackState;
+    }
+
+    public void SetBlocking(bool BlockState)
+    {
+        Blocking = BlockState;
+    }
+
+    public void HitDamaged()
+    {
+        ViewmodelAnimator.SetTrigger("Knockback");
+        switch (Health)
         {
-            transform.position = Vector3.Lerp(Origin, new Vector3(Origin.x, FoundItem.transform.position.y, Origin.z) - transform.GetComponent<BoxCollider>().size / 2, TimeElapsed / ReachTime);
-            TimeElapsed += Time.deltaTime;
-            yield return null;
+            case 3:
+                Health = 2;
+                HealthCanvas.Heart_R.sprite = HeartEmpty;
+                break;
+            case 2:
+                Health = 1;
+                HealthCanvas.Heart_R.sprite = HeartEmpty;
+                HealthCanvas.Heart_M.sprite = HeartEmpty;
+                break;
+            case 1:
+                Health = 0;
+                HitDeath();
+                HealthCanvas.Heart_R.sprite = HeartEmpty;
+                HealthCanvas.Heart_M.sprite = HeartEmpty;
+                HealthCanvas.Heart_L.sprite = HeartEmpty;
+                break;
+            default:
+                Health = 0;
+                HitDeath();
+                break;
         }
-    }*/
+    }
+
+    void HitDeath()
+    {
+        Health = 0;
+        GameObject plyRagdoll = Instantiate(PlayerRagdoll, gameObject.transform.position, gameObject.transform.rotation);
+        FirstPersonCamera.transform.SetParent(plyRagdoll.transform);
+        for (int i = 0; i < FirstPersonCamera.transform.childCount; i++)
+        {
+            Destroy(FirstPersonCamera.transform.GetChild(i).gameObject);
+        }
+        FirstPersonCamera.GetComponent<DeathCamFollow>().DeathCam(plyRagdoll);
+        SetCursorLocked(false);
+        GameOverScreen.SetActive(true);
+        gameObject.transform.gameObject.SetActive(false);
+    }
 }

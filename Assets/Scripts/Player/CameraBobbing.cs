@@ -17,7 +17,6 @@ public class CameraBobbing : MonoBehaviour
     {
         if (Input.GetButtonDown("Reload"))
         {
-            print("bitch");
             SingleBob();
         }
     }

@@ -14,7 +14,7 @@ public class PauseMenuManager : MonoBehaviour
 
 	void Update()
     {
-        if (Input.GetButtonDown("Menu"))
+        if (Input.GetButtonDown("Menu") && FPSController.Health != 0)
         {
             if (!GamePaused)
             {
@@ -55,5 +55,10 @@ public class PauseMenuManager : MonoBehaviour
         FPSController.SetCursorLocked(false);
         Time.timeScale = 0f;
         PauseCanvas.SetActive(true);
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
