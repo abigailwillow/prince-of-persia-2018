@@ -25,6 +25,11 @@ public class FPSController : MonoBehaviour
     public Sprite HeartEmpty;
     public GameObject PlayerRagdoll;
     public GameObject GameOverScreen;
+    public GameObject ViewmodelScimitar;
+    public GameObject WorldScimitar;
+    public float DeadlyAirTime = 2f;
+    public float PainfulAirTime = 1f;
+    public float WoundedAirTime = 1.5f;
 
     public static bool IsCursorLocked;
     public bool Attacking;
@@ -43,6 +48,10 @@ public class FPSController : MonoBehaviour
     float NextHit = 0f;
     float NextBlock = 0f;
     bool DebugMode = false;
+    bool HasSword;
+    int AnimIndex;
+    bool LastGrounded;
+    float AirTime;
 
     [HideInInspector] public Vector3 deltaMovement = Vector3.zero;
     [HideInInspector] public bool Hanging;
@@ -56,6 +65,10 @@ public class FPSController : MonoBehaviour
         SetCursorLocked(true);
         headBone.transform.eulerAngles = curRotation;
         Health = 3;
+        HasSword = false;
+        ViewmodelAnimator.SetBool("HasSword", HasSword);
+        ViewmodelScimitar.SetActive(false);
+        WorldScimitar.SetActive(false);
     }
 
     public static void SetCursorLocked(bool boolean)
@@ -72,27 +85,47 @@ public class FPSController : MonoBehaviour
         }
     }
 
+    /*
+     * Movement Indexes:
+     * 1 = Idle
+     * 2 = Crouch Idle
+     * 3 = Crouch
+     * 4 = Walk
+     * 5 = Run
+     */
+
     void Update()
     {
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) // Taking inputs
         {
-            anim.SetFloat("MoveSpeed", 1f);
+            AnimIndex = 4;
             ViewmodelAnimator.SetFloat("MoveSpeed", 1f);
             curMultiplier = 1f;
-        }
-        else
-        {
-            anim.SetFloat("MoveSpeed", 0f);
-            ViewmodelAnimator.SetFloat("MoveSpeed", 0f);
-            curMultiplier = 0f;
+            if (Input.GetButton("Crouch"))
+            {
+                AnimIndex = 3;
+            }
         }
 
-        if (Input.GetAxisRaw("Vertical") > 0 && Input.GetButton("Sprint"))
+        if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
         {
-            anim.SetFloat("MoveSpeed", 2f);
+            AnimIndex = 1;
+            ViewmodelAnimator.SetFloat("MoveSpeed", 0f);
+            curMultiplier = 0f;
+            if (Input.GetButton("Crouch"))
+            {
+                AnimIndex = 2;
+            }
+        }
+
+        if (Input.GetAxisRaw("Vertical") == 1 && Input.GetButton("Sprint"))
+        {
+            AnimIndex = 5;
             ViewmodelAnimator.SetFloat("MoveSpeed", 2f);
             curMultiplier = runMultiplier;
         }
+        anim.SetInteger("MoveSpeed", AnimIndex);
+        //print("State: " + anim.GetInteger("MoveSpeed"));
 
         movementH = Input.GetAxisRaw("Horizontal");
         movementV = Input.GetAxisRaw("Vertical");
@@ -131,6 +164,7 @@ public class FPSController : MonoBehaviour
                 DebugMode = false;
                 movementSpeed *= 0.5f;
                 verticalVelocity = 0f;
+                AirTime = 0f;
             }
             else
             {
@@ -187,7 +221,7 @@ public class FPSController : MonoBehaviour
 
         ply.Move(deltaMovement * Time.deltaTime);
 
-        if (Input.GetButtonDown("Fire1") && Time.time >= NextHit && !PauseMenuManager.GamePaused && !Blocking) // Attack
+        if (Input.GetButtonDown("Fire1") && Time.time >= NextHit && !PauseMenuManager.GamePaused && !Blocking && HasSword) // Attack
         {
             Attacking = true;
             NextHit = Time.time + HitCooldown;
@@ -200,7 +234,7 @@ public class FPSController : MonoBehaviour
             Attacking = false;
         }
 
-        if (Input.GetButtonDown("Fire2") && Time.time >= NextBlock && !PauseMenuManager.GamePaused && !Attacking) // Block
+        if (Input.GetButtonDown("Fire2") && Time.time >= NextBlock && !PauseMenuManager.GamePaused && !Attacking && HasSword) // Block
         {
             Blocking = true;
             NextBlock = Time.time + BlockCooldown;
@@ -241,11 +275,58 @@ public class FPSController : MonoBehaviour
 
         if (Input.GetButtonDown("Use"))
         {
-            RaycastHit FoundItem;
-            if (Physics.Raycast(FirstPersonCamera.transform.position, FirstPersonCamera.transform.forward, out FoundItem, ReachDistance))
+            ViewmodelAnimator.SetTrigger("Grab");
+        }
+
+        if (!LastGrounded && isGrounded) // Fallen
+        {
+            if (AirTime > PainfulAirTime && AirTime <= WoundedAirTime)
             {
+                HitDamaged(1);
             }
-            HitDeath();
+            else if (AirTime > WoundedAirTime && AirTime <= DeadlyAirTime)
+            {
+                HitDamaged(2);
+            }
+            else if (AirTime > DeadlyAirTime)
+            {
+                HitDeath();
+            }
+            ViewmodelAnimator.SetTrigger("Fallen");
+            AirTime = 0f;
+            //verticalVelocity = -0.5f;
+        }
+        else if (LastGrounded && !isGrounded) // Jumped
+        {
+            StartCoroutine(OffGroundCount());
+        }
+        LastGrounded = isGrounded;
+        //print("vert: " + verticalVelocity);
+    }
+
+    IEnumerator OffGroundCount()
+    {
+        AirTime = 0f;
+        while (!isGrounded)
+        {
+            AirTime += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    public void AttemptPickup()
+    {
+        RaycastHit FoundItem;
+        if (Physics.Raycast(FirstPersonCamera.transform.position, FirstPersonCamera.transform.forward, out FoundItem, ReachDistance))
+        {
+            if (FoundItem.transform.tag == "Pickup")
+            {
+                FoundItem.transform.gameObject.SetActive(false);
+                HasSword = true;
+                ViewmodelAnimator.SetBool("HasSword", HasSword);
+                ViewmodelScimitar.SetActive(true);
+                WorldScimitar.SetActive(true);
+            }
         }
     }
 
@@ -259,29 +340,27 @@ public class FPSController : MonoBehaviour
         Blocking = BlockState;
     }
 
-    public void HitDamaged()
+    public void HitDamaged(int damage)
     {
         ViewmodelAnimator.SetTrigger("Knockback");
+        anim.SetTrigger("Knockback");
+        Health -= damage;
         switch (Health)
         {
             case 3:
-                Health = 2;
-                HealthCanvas.Heart_R.sprite = HeartEmpty;
                 break;
             case 2:
-                Health = 1;
                 HealthCanvas.Heart_R.sprite = HeartEmpty;
-                HealthCanvas.Heart_M.sprite = HeartEmpty;
                 break;
             case 1:
-                Health = 0;
-                HitDeath();
                 HealthCanvas.Heart_R.sprite = HeartEmpty;
                 HealthCanvas.Heart_M.sprite = HeartEmpty;
-                HealthCanvas.Heart_L.sprite = HeartEmpty;
                 break;
             default:
                 Health = 0;
+                HealthCanvas.Heart_R.sprite = HeartEmpty;
+                HealthCanvas.Heart_M.sprite = HeartEmpty;
+                HealthCanvas.Heart_L.sprite = HeartEmpty;
                 HitDeath();
                 break;
         }
@@ -290,6 +369,9 @@ public class FPSController : MonoBehaviour
     void HitDeath()
     {
         Health = 0;
+        HealthCanvas.Heart_R.sprite = HeartEmpty;
+        HealthCanvas.Heart_M.sprite = HeartEmpty;
+        HealthCanvas.Heart_L.sprite = HeartEmpty;
         GameObject plyRagdoll = Instantiate(PlayerRagdoll, gameObject.transform.position, gameObject.transform.rotation);
         FirstPersonCamera.transform.SetParent(plyRagdoll.transform);
         for (int i = 0; i < FirstPersonCamera.transform.childCount; i++)

@@ -89,7 +89,7 @@ public class AIController : MonoBehaviour
                 FPSController ply = SwordHit.transform.GetComponent<FPSController>();
                 if (!ply.Blocking)
                 {
-                    ply.HitDamaged();
+                    ply.HitDamaged(1);
                     StartCoroutine(Knockback(SwordHit));
                     SoundOrigin = SoundSource.transform.localPosition;
                     SoundSource.transform.position = SwordHit.point;
@@ -129,6 +129,7 @@ public class AIController : MonoBehaviour
 
     public void HitDamaged()
     {
+        anim.SetTrigger("Knockback");
         switch (Health)
         {
             case 3:
