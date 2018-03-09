@@ -4385,6 +4385,11 @@ MonoBehaviour:
   PlayerRagdoll: {fileID: 1104053939027886, guid: ee9a934fb2aed0b40928797e2b13123e,
     type: 2}
   GameOverScreen: {fileID: 0}
+  ViewmodelScimitar: {fileID: 1754165729036202}
+  WorldScimitar: {fileID: 1192726361260314}
+  DeadlyAirTime: 2
+  PainfulAirTime: 1.1
+  WoundedAirTime: 1.5
   Attacking: 0
   Blocking: 0
   deltaMovement: {x: 0, y: 0, z: 0}

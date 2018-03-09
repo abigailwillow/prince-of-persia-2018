@@ -1,0 +1,199 @@
+fileFormatVersion: 2
+guid: 3b11a2ee15d211d43bfb168779dfab62
+timeCreated: 1520602077
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Wood_Barrel_Destructible_BottomLid
+    100002: Wood_Barrel_Destructible_BottomLid.001
+    100004: Wood_Barrel_Destructible_BottomLid.002
+    100006: Wood_Barrel_Destructible_BottomLid.003
+    100008: Wood_Barrel_Destructible_BottomRing
+    100010: Wood_Barrel_Destructible_Main
+    100012: Wood_Barrel_Destructible_Main.001
+    100014: Wood_Barrel_Destructible_Main.002
+    100016: Wood_Barrel_Destructible_Main.003
+    100018: Wood_Barrel_Destructible_Main.004
+    100020: Wood_Barrel_Destructible_Main.005
+    100022: Wood_Barrel_Destructible_Main.006
+    100024: Wood_Barrel_Destructible_Main.007
+    100026: Wood_Barrel_Destructible_Main.008
+    100028: Wood_Barrel_Destructible_Main.009
+    100030: Wood_Barrel_Destructible_Main.010
+    100032: Wood_Barrel_Destructible_Main.011
+    100034: Wood_Barrel_Destructible_Main.012
+    100036: Wood_Barrel_Destructible_Main.013
+    100038: Wood_Barrel_Destructible_TopLid
+    100040: Wood_Barrel_Destructible_TopLid.001
+    100042: Wood_Barrel_Destructible_TopLid.002
+    100044: Wood_Barrel_Destructible_TopLid.003
+    100046: Wood_Barrel_Destructible_TopRing
+    100048: //RootNode
+    400000: Wood_Barrel_Destructible_BottomLid
+    400002: Wood_Barrel_Destructible_BottomLid.001
+    400004: Wood_Barrel_Destructible_BottomLid.002
+    400006: Wood_Barrel_Destructible_BottomLid.003
+    400008: Wood_Barrel_Destructible_BottomRing
+    400010: Wood_Barrel_Destructible_Main
+    400012: Wood_Barrel_Destructible_Main.001
+    400014: Wood_Barrel_Destructible_Main.002
+    400016: Wood_Barrel_Destructible_Main.003
+    400018: Wood_Barrel_Destructible_Main.004
+    400020: Wood_Barrel_Destructible_Main.005
+    400022: Wood_Barrel_Destructible_Main.006
+    400024: Wood_Barrel_Destructible_Main.007
+    400026: Wood_Barrel_Destructible_Main.008
+    400028: Wood_Barrel_Destructible_Main.009
+    400030: Wood_Barrel_Destructible_Main.010
+    400032: Wood_Barrel_Destructible_Main.011
+    400034: Wood_Barrel_Destructible_Main.012
+    400036: Wood_Barrel_Destructible_Main.013
+    400038: Wood_Barrel_Destructible_TopLid
+    400040: Wood_Barrel_Destructible_TopLid.001
+    400042: Wood_Barrel_Destructible_TopLid.002
+    400044: Wood_Barrel_Destructible_TopLid.003
+    400046: Wood_Barrel_Destructible_TopRing
+    400048: //RootNode
+    2300000: Wood_Barrel_Destructible_BottomLid
+    2300002: Wood_Barrel_Destructible_BottomLid.001
+    2300004: Wood_Barrel_Destructible_BottomLid.002
+    2300006: Wood_Barrel_Destructible_BottomLid.003
+    2300008: Wood_Barrel_Destructible_BottomRing
+    2300010: Wood_Barrel_Destructible_Main
+    2300012: Wood_Barrel_Destructible_Main.001
+    2300014: Wood_Barrel_Destructible_Main.002
+    2300016: Wood_Barrel_Destructible_Main.003
+    2300018: Wood_Barrel_Destructible_Main.004
+    2300020: Wood_Barrel_Destructible_Main.005
+    2300022: Wood_Barrel_Destructible_Main.006
+    2300024: Wood_Barrel_Destructible_Main.007
+    2300026: Wood_Barrel_Destructible_Main.008
+    2300028: Wood_Barrel_Destructible_Main.009
+    2300030: Wood_Barrel_Destructible_Main.010
+    2300032: Wood_Barrel_Destructible_Main.011
+    2300034: Wood_Barrel_Destructible_Main.012
+    2300036: Wood_Barrel_Destructible_Main.013
+    2300038: Wood_Barrel_Destructible_TopLid
+    2300040: Wood_Barrel_Destructible_TopLid.001
+    2300042: Wood_Barrel_Destructible_TopLid.002
+    2300044: Wood_Barrel_Destructible_TopLid.003
+    2300046: Wood_Barrel_Destructible_TopRing
+    3300000: Wood_Barrel_Destructible_BottomLid
+    3300002: Wood_Barrel_Destructible_BottomLid.001
+    3300004: Wood_Barrel_Destructible_BottomLid.002
+    3300006: Wood_Barrel_Destructible_BottomLid.003
+    3300008: Wood_Barrel_Destructible_BottomRing
+    3300010: Wood_Barrel_Destructible_Main
+    3300012: Wood_Barrel_Destructible_Main.001
+    3300014: Wood_Barrel_Destructible_Main.002
+    3300016: Wood_Barrel_Destructible_Main.003
+    3300018: Wood_Barrel_Destructible_Main.004
+    3300020: Wood_Barrel_Destructible_Main.005
+    3300022: Wood_Barrel_Destructible_Main.006
+    3300024: Wood_Barrel_Destructible_Main.007
+    3300026: Wood_Barrel_Destructible_Main.008
+    3300028: Wood_Barrel_Destructible_Main.009
+    3300030: Wood_Barrel_Destructible_Main.010
+    3300032: Wood_Barrel_Destructible_Main.011
+    3300034: Wood_Barrel_Destructible_Main.012
+    3300036: Wood_Barrel_Destructible_Main.013
+    3300038: Wood_Barrel_Destructible_TopLid
+    3300040: Wood_Barrel_Destructible_TopLid.001
+    3300042: Wood_Barrel_Destructible_TopLid.002
+    3300044: Wood_Barrel_Destructible_TopLid.003
+    3300046: Wood_Barrel_Destructible_TopRing
+    4300000: Wood_Barrel_Destructible_Main
+    4300002: Wood_Barrel_Destructible_Main.001
+    4300004: Wood_Barrel_Destructible_Main.003
+    4300006: Wood_Barrel_Destructible_Main.002
+    4300008: Wood_Barrel_Destructible_Main.005
+    4300010: Wood_Barrel_Destructible_Main.004
+    4300012: Wood_Barrel_Destructible_Main.007
+    4300014: Wood_Barrel_Destructible_Main.006
+    4300016: Wood_Barrel_Destructible_Main.009
+    4300018: Wood_Barrel_Destructible_Main.008
+    4300020: Wood_Barrel_Destructible_Main.011
+    4300022: Wood_Barrel_Destructible_Main.010
+    4300024: Wood_Barrel_Destructible_Main.013
+    4300026: Wood_Barrel_Destructible_Main.012
+    4300028: Wood_Barrel_Destructible_BottomLid.001
+    4300030: Wood_Barrel_Destructible_BottomLid.002
+    4300032: Wood_Barrel_Destructible_BottomLid.003
+    4300034: Wood_Barrel_Destructible_BottomLid
+    4300036: Wood_Barrel_Destructible_TopLid
+    4300038: Wood_Barrel_Destructible_TopLid.001
+    4300040: Wood_Barrel_Destructible_TopLid.002
+    4300042: Wood_Barrel_Destructible_TopLid.003
+    4300044: Wood_Barrel_Destructible_BottomRing
+    4300046: Wood_Barrel_Destructible_TopRing
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.7
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

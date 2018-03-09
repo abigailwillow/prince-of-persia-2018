@@ -68,12 +68,25 @@ public class AttackController : MonoBehaviour
                 SoundSource.transform.localPosition = SoundOrigin;
                 GameObject ParticleEmitter = Instantiate(DustEmitter, SwordHit.point, Quaternion.LookRotation(SwordHit.normal));
                 StartCoroutine(GCParticles(ParticleEmitter));
+
                 if (SwordHit.transform.tag == "Hittable")
                 {
+                    if (SwordHit.transform.GetComponentInParent<BreakableObject>() != null && !SwordHit.transform.GetComponentInParent<BreakableObject>().Broken)
+                    {
+                        SwordHit.transform.GetComponentInParent<BreakableObject>().Break();
+                    }
+                    else
+                    {
                     SwordHit.transform.GetComponent<Rigidbody>().AddForce(FirstPersonCamera.transform.forward * HitStrength);
+                    }
                 }
             }
         }
+    }
+
+    public void AttemptPickup()
+    {
+        GetComponentInParent<FPSController>().AttemptPickup();
     }
 
     IEnumerator GCParticles(GameObject DeleteEmitter)
