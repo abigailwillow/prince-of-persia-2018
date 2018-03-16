@@ -28,11 +28,19 @@ public class GateController : MonoBehaviour
     {
         if (!IsOpening)
         {
-            StartCoroutine(OpenGate());
+            StartCoroutine(OpenGate(false));
         }
     }
 
-    IEnumerator OpenGate()
+    public void StayOpen()
+    {
+        if (!IsOpening)
+        {
+            StartCoroutine(OpenGate(true));
+        }
+    }
+
+    IEnumerator OpenGate(bool Stay)
     {
         IsOpening = true;
         SoundSource.PlayOneShot(GateOpenSound);
@@ -45,7 +53,10 @@ public class GateController : MonoBehaviour
             yield return null;
         }
         yield return null;
-        StartCoroutine(KeepOpen());
+        if (!Stay)
+        {
+            StartCoroutine(KeepOpen());
+        }
     }
 
     IEnumerator KeepOpen()

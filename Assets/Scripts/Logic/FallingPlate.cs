@@ -61,7 +61,7 @@ public class FallingPlate : MonoBehaviour
             Rigidbody[] RBArray = BPlate.transform.GetComponentsInChildren<Rigidbody>();
             foreach (Rigidbody rbi in RBArray)
             {
-                rbi.AddForce(new Vector3(Random.Range(0, MaxForce), Random.Range(0, MaxForce), Random.Range(0, MaxForce)));
+                rbi.AddForce(new Vector3(Random.Range(MaxForce, MaxForce), Random.Range(0, MaxForce), Random.Range(MaxForce, MaxForce)));
             }
             HitGround = false;
         }

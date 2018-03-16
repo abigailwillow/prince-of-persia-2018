@@ -29,8 +29,11 @@ public class HintZoneManager : MonoBehaviour
             GameObject HintCanvas = Instantiate(CanvasTemplate, HUDCanvas.transform, false);
             isInstanced = true;
             HintElements = HintCanvas.GetComponent<HintTextLocator>();
+            if (ActionButton != "")
+            {
+                HintElements.ActionButton.text = ActionButton;
+            }
             HintElements.ActionText.text = ActionName;
-            HintElements.ActionButton.text = ActionButton;
             CanvasGroup FadingCanvas = HintCanvas.GetComponent<CanvasGroup>();
 
             for (float i = 0; i <= FadeTime; i += Time.deltaTime)

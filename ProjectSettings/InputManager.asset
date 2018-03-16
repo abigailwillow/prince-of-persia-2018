@@ -202,7 +202,7 @@ InputManager:
     descriptiveName: Menu Button
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: tab
+    positiveButton: escape
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0

@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 65262035752695676}
   - component: {fileID: 114356031559015572}
   - component: {fileID: 54063178479575452}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnemyRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
