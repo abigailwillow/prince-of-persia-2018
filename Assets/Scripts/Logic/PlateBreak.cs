@@ -10,7 +10,7 @@ public class PlateBreak : MonoBehaviour
         plate = GetComponentInParent<FallingPlate>();
     }
 
-	void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.relativeVelocity.magnitude > plate.MaxVelocity)
         {

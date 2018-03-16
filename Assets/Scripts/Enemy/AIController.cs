@@ -15,10 +15,10 @@ public class AIController : MonoBehaviour
     public string BlockSound;
     public Sprite HeartEmpty;
     public GameObject EnemyRagdoll;
-    public Vector3 PatrolPoint1;
-    public Vector3 PatrolPoint2;
-    public float PatrolTime = 2f;
-    public float StepLength = 1f;
+    //public Vector3 PatrolPoint1;
+    //public Vector3 PatrolPoint2;
+    //public float PatrolTime = 2f;
+    //public float StepLength = 1f;
 
     public bool Blocking;
     public bool Attacking;
@@ -32,9 +32,10 @@ public class AIController : MonoBehaviour
     SoundManager EnemySounds;
     AudioSource SoundSource;
     Vector3 SoundOrigin;
+    Vector3 Origin;
     HeartLocator HealthCanvas;
-    int PatrolState = 2;
-    bool LastPlayerCheck;
+    //int PatrolState = 2;
+    //bool LastPlayerCheck;
     FPSController plyc;
 
     void Awake()
@@ -49,9 +50,7 @@ public class AIController : MonoBehaviour
 
         HealthCanvas = GetComponentInChildren<Canvas>().transform.gameObject.GetComponent<HeartLocator>();
 
-        StartCoroutine(Patrol());
-
-
+        Origin = transform.position;
     }
 
     void Update()
@@ -65,12 +64,14 @@ public class AIController : MonoBehaviour
             anim.SetFloat("MoveSpeed", 0f);
         }
 
-        if (LastPlayerCheck != PlayerInRoom)
+        if (PlayerInRoom)
         {
-            nav.SetDestination(transform.position);
-            StartCoroutine(Approach());
+            nav.SetDestination(ply.transform.position);
         }
-        LastPlayerCheck = PlayerInRoom;
+        else 
+        {
+            nav.SetDestination(Origin);
+        }
     }
 
     public void PlayAttack()
@@ -181,23 +182,7 @@ public class AIController : MonoBehaviour
         Destroy(DeleteEmitter);
     }
 
-    IEnumerator Patrol()
-    {
-        if (PatrolState == 1 && !PlayerInRoom)
-        {
-            nav.SetDestination(PatrolPoint2);
-            PatrolState = 2;
-        }
-        else if (PatrolState == 2 && !PlayerInRoom)
-        {
-            nav.SetDestination(PatrolPoint1);
-            PatrolState = 1;
-        }
-        yield return new WaitForSeconds(PatrolTime);
-        StartCoroutine(Patrol());
-    }
-
-    IEnumerator Approach()
+    /*IEnumerator Approach()
     {
         nav.SetDestination(ply.position);
         yield return new WaitForSeconds(StepLength);
@@ -208,5 +193,5 @@ public class AIController : MonoBehaviour
         {
             StartCoroutine(Approach());
         }
-    }
+    }*/
 }

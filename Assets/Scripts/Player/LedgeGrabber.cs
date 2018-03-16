@@ -30,14 +30,19 @@ public class LedgeGrabber : MonoBehaviour
             {
                 if (WallCheck.transform.tag == "Grabbable" && !ply.isGrounded)
                 {
-                    Vector3 LedgeTarget = WallCheck.transform.Find("GrabTarget").transform.position;
+                    Transform LedgeTarget = WallCheck.transform.Find("GrabTarget").transform;
                     StartCoroutine(LedgeRoutine(LedgeTarget));
                 }
             }
         }
     }
 
-    IEnumerator LedgeRoutine(Vector3 LedgeTarget)
+    void Update()
+    {
+        Debug.DrawLine(FirstPersonCamera.transform.position, FirstPersonCamera.transform.position + FirstPersonCamera.transform.forward * GrabDistance);
+    }
+
+    IEnumerator LedgeRoutine(Transform LedgeTarget)
     {
         float ElapsedTime = 0f;
         Origin = transform.position;
@@ -66,20 +71,20 @@ public class LedgeGrabber : MonoBehaviour
         }
     }
 
-    IEnumerator GrabRoutine(Vector3 LedgeTarget)
+    IEnumerator GrabRoutine(Transform LedgeTarget)
     {
         Vector3 SecondOrigin = transform.position;
         anim.SetTrigger("Climb");
         for (float i = 0f; i < PullupTime; i += Time.deltaTime)
         {
-            transform.position = Vector3.Lerp(SecondOrigin, new Vector3(transform.position.x, LedgeTarget.y, transform.position.z), i / PullupTime);
+            transform.position = Vector3.Lerp(SecondOrigin, new Vector3(transform.position.x, LedgeTarget.position.y, transform.position.z), i / PullupTime);
             ply.deltaMovement = Vector3.zero;
             ply.verticalVelocity = 0f;
             yield return null;
         }
         yield return null;
         ply.verticalVelocity = 0f;
-        transform.position = new Vector3(transform.position.x + FixOffset, LedgeTarget.y, transform.position.z);
+        transform.position = LedgeTarget.forward * FixOffset + new Vector3(transform.position.x ,LedgeTarget.position.y, LedgeTarget.position.z);
     }
 
     void LateUpdate()

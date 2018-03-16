@@ -16,6 +16,7 @@ public class FPSController : MonoBehaviour
     //public float maxCameraMove = 1f;
     public Transform headBone;
     public Camera FirstPersonCamera;
+    public bool UseDebug = false;
     public TextMeshProUGUI debugGUI;
     public Animator ViewmodelAnimator;
     public float HitCooldown = 1f;
@@ -216,8 +217,10 @@ public class FPSController : MonoBehaviour
         }
 
         //print("x = " + deltaMovement.x + "; z = " + deltaMovement.z);
-
-        debugGUI.SetText("Velocity: {0:1} \nGrounded: " + isGrounded, ply.velocity.magnitude);
+        if (UseDebug)
+        {
+            debugGUI.SetText("Velocity: {0:1} \nGrounded: " + isGrounded, ply.velocity.magnitude);
+        }
 
         ply.Move(deltaMovement * Time.deltaTime);
 
@@ -306,10 +309,11 @@ public class FPSController : MonoBehaviour
 
     IEnumerator OffGroundCount()
     {
+        float OriginY = transform.position.y;
         AirTime = 0f;
         while (!isGrounded)
         {
-            AirTime += Time.deltaTime;
+            AirTime = OriginY - transform.position.y;
             yield return null;
         }
     }
