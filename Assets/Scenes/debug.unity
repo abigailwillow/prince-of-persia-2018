@@ -997,7 +997,7 @@ Prefab:
         type: 2}
       propertyPath: debugGUI
       value: 
-      objectReference: {fileID: 1866708814}
+      objectReference: {fileID: 0}
     - target: {fileID: 114649429824685556, guid: c73005be2473be844943a6b2f9dd816c,
         type: 2}
       propertyPath: HealthCanvas
@@ -6516,12 +6516,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4253728070719808, guid: a8cf18fd8340705489d5e5dde89d6cd0,
     type: 2}
   m_PrefabInternal: {fileID: 1862638879}
---- !u!114 &1866708814 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114714190623425146, guid: 409e4c9cad22ba74588fc420d53307a6,
-    type: 2}
-  m_PrefabInternal: {fileID: 1383619286}
-  m_Script: {fileID: 1453722849, guid: 89f0137620f6af44b9ba852b4190e64e, type: 3}
 --- !u!1001 &1875888370
 Prefab:
   m_ObjectHideFlags: 0
